@@ -1,0 +1,64 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model List<Dobavljac>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dobavljača</title>
+</head>
+<body>
+    <div class="tabela">
+    <table class="table table-hover table-bordered ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Naziv</th>
+                <th>Broj telefona</th>
+                <th>e-mail adresa</th>
+                <th>Grad</th>
+                <th>Adresa</th>
+                <th>Kategorija</th>
+                <th>Akcija</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Dobavljac x in Model)
+            {
+                <tr>
+                    <td >
+                        @x.Naziv
+                    </td>
+                    <td > 
+                        @x.BrojTelefona
+                    </td>
+                    <td >
+                        @x.Email
+                    <td >
+                        @x.Grad.Naziv
+                    </td>
+                    <td >
+                        @x.Adresa
+                    </td>
+                    <td >
+                        @x.DobavljacKategorija.nazivKategorije
+                    </td>
+                    
+                    <td >
+                        <a href="/Administrator/UrediDobavljaca?dobavljacid=@x.DobavljacID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                        <a href="/Administrator/ObrisiDobavljaca?dobavljacid=@x.DobavljacID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Administrator/Index" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>Nazad</a>
+    </div>
+</body>
+</html>

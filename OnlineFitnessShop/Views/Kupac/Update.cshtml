@@ -1,0 +1,165 @@
+﻿@using OnlineFitnessShop.ViewModels.Kupac;
+@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@model OnlineFitnessShop.ViewModels.Kupac.KorisnikVM;
+@{
+    var gradovi = (List<SelectListItem>)ViewData["Gradovi"];
+    string poruka = (string)TempData["poruka"];
+    string poruka2 = (string)TempData["poruka2"];
+    KorisnikVM kor = (KorisnikVM)TempData["Korisnik"];
+
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/Kupac/cssZaView.css">
+</head>
+<body>
+    <div class="container-l">
+        <div class="l2">
+            <form asp-action="Snimi" id="update">
+
+                @if (poruka != null)
+                {
+                
+                    <div class="alert alert-danger">
+                        @poruka
+                    </div>
+                }
+
+                @if (poruka2 != null)
+                {
+             
+                    <div class="alert alert-success">
+                        @poruka2
+                    </div>
+                }
+
+                    <input asp-for="ID"  value="@kor.ID" hidden /><br />
+
+                <div class="form-group">
+                    <label class="labelB">Ime</label><br />
+                    <input asp-for="Ime" class="inputB" value="@kor.Ime" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Prezime</label><br />
+                    <input asp-for="Prezime" class="inputB" value="@kor.Prezime" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">E-mail adresa</label><br />
+                    <input asp-for="Email" class="inputB" value="@kor.Email" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Datum rođenja</label><br />
+                    <input asp-for="DatumRodjenja" class="inputB" type="date" value="@kor.DatumRodjenja.ToString(format:"yyyy-MM-dd")" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Broj telefona</label><br />
+                    <input asp-for="BrojTelefona" class="inputB" value="@kor.BrojTelefona" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Grad</label><br />
+                    <select asp-for="GradID" asp-items="gradovi" class="selectB">
+                        <option hidden readonly value="@kor.GradID">Odaberi grad</option>
+                    </select><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Adresa</label><br />
+                    <input asp-for="Adresa" class="inputB" value="@kor.Adresa" /><br />
+                </div>
+
+
+                <div class="button-cont">
+                    <button class="btn btn-info" type="submit">UPDATE</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#update").validate({
+        rules: {
+            Ime: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z]{1,}/
+            },
+            Prezime: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z]{1,}/
+            },
+            DatumRodjenja: {
+                required: true
+            },
+            Email: {
+                required: true,
+                regex: /([a-z0-9._-]{1,61})@@([a-z]{2,}).com/
+
+            },
+            BrojTelefona: {
+                required: true,
+                regex: /^\+387 06[0-9]{1}-[0-9]{3}-[0-9]{3,4}/
+
+            },
+            GradID: {
+                required: true
+
+            },
+            Adresa: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            Ime: {
+                required: "Obavezno polje!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            Prezime: {
+                required: "Obavezno polje!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            DatumRodjenja: {
+                required: "Obavezno polje!",
+            },
+            Email: {
+                required: "Obavezno polje!",
+                regex: "format: text@text.com"
+            },
+            BrojTelefona: {
+                required: "Obavezno polje!",
+                regex: "format: +387 06X-XXX-XXX(X)"
+            },
+            GradID: {
+                required: "Obavezno polje!"
+            },
+            Adresa: {
+                required: "Obavezno polje!",
+                minlength: "Minimalno unesi 5 slova!"
+
+            }
+
+        }
+
+
+    });
+</script>

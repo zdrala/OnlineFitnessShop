@@ -1,0 +1,176 @@
+﻿@using OnlineFitnessShop.Helpers;
+@using Microsoft.AspNetCore.Http
+@using OnlineFitnessShop.Models;
+@using ClassLibrarySeminarski.Model;
+@{
+    Korisnik kor = Autenfikacija.GetLogiraniKorisnik(Context);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Kupac/kupacLayout.css">
+    <link rel="stylesheet" href="~/css/Kupac/slicknav.min.css">
+    <link rel="stylesheet" href="~/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        function autoLoad() {
+            var z = getItemNoumber();
+            document.getElementById("noumberItems").innerHTML = z;
+        };
+
+        window.onload = autoLoad;
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="/Kupac/Home"><img src="https://i.ibb.co/WDxsCQv/logo.png" alt=""></a>
+                </div>
+                <div class="header-right">
+                    <span id="noumberItems"></span>
+                    <a href="/Kupac/Korpa"><img class="img-for-margin" src="~/images/korpa.png" alt=""></a>
+                </div>
+
+
+
+                @{
+                    if (kor != null)
+                    {
+                        <div class="user-access">
+                            <a href="/Kupac/Info" style="color:cornflowerblue">@kor.Ime @kor.Prezime ,</a>
+                            <a asp-controller="Autentifikacija" asp-action="LogOut" onclick="Ocisti()">LogOut</a>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="user-access">
+                            <a href="/Autentifikacija/Registracija">Registracija</a>
+                            <a href="/Autentifikacija/Index" class="in" onclick="Ocisti()">Prijava</a>
+                        </div>
+                    }
+                }
+
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a href="/Kupac/Home">Početna</a></li>
+                        <li>
+                            <a>Proizvodi</a>
+                            <ul class="sub-menu">
+                                <li><a href="/Kupac/ShopOdjeca">Odjeća</a></li>
+                                <li><a href="/Kupac/ShopObuca">Obuća</a></li>
+                                <li><a href="/Kupac/ShopSuplementacija">Suplementacija</a></li>
+                                <li><a href="/Kupac/ShopDodatak">Dodatci</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="./product-page.html">O nama</a></li>
+                        <li><a href="/Kupac/Kontakt">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main body -->
+    <div id="main">
+        <div id="header"></div>
+        <div id="main1">
+
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="page-footer">
+
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <h4 class="footer-naslov">Informacije</h4>
+                    <ul class="footer-lista">
+                        <li>
+                            <a href="#!">O nama</a>
+                        </li>
+                        <li>
+                            <a href="#!">Uvjeti kupovine</a>
+                        </li>
+                        <li>
+                            <a href="#!">Privatnost i kolačiči</a>
+                        </li>
+                        <li>
+                            <a href="#!">Žaštita podataka</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+                <div class="col-md-4 mx-auto">
+                    <h4 class="footer-naslov">Kupovina</h4>
+                    <ul class="footer-lista">
+                        <li>
+                            <a href="#!">Načini plaćanja</a>
+                        </li>
+                        <li>
+                            <a href="#!">Dostava</a>
+                        </li>
+                        <li>
+                            <a href="#!">Reklamacije i povrat</a>
+                        </li>
+                        <li>
+                            <a href="#!">Program lojalnosti</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+
+        <div class="social-links-div">
+            <div class="container">
+                <div class="social-links-row">
+                    <button onclick="window.location.href = 'https://facebook.com';" type="button" class="btn-fb"><i class="fab fa-facebook-f pr-1"></i>Facebook</button>
+                    <button onclick="window.location.href = 'https://twitter.com';" type="button" class="btn-tw"><i class="fab fa-twitter pr-1"></i>Twitter</button>
+                    <button onclick="window.location.href = 'https://instagram.com';" type="button" class=" btn-ins"><i class="fab fa-instagram pr-1"></i>Instagram</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="txt-owner">©2020 All rights reserved !</div>
+
+    </footer>
+
+
+    <script src="~/js/navmobile/jquery.nav.js"></script>
+    <script src="~/js/navmobile/navmenu.js"></script>
+    <script src="~/js/Kupac/homePage.js"></script>
+
+</body>
+</html>
+

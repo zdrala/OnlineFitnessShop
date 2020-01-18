@@ -1,0 +1,202 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "DodajProizvod";
+
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodajSuplementVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodaj suplement</title>
+
+</head>
+<body>
+ 
+<div class="dodajProizvodForm">
+    <div class="panel-heading">
+        <div class="panel-title">
+            Dodavanje nove suplementacije
+        </div>
+    </div>
+    <form asp-action="SpremiSuplementaciju" enctype="multipart/form-data" id="dodavanjeSuplementa">
+        <div class="form-group">
+            <label>Naziv proizvoda</label>
+            <input asp-for="Naziv" class="form-control" />
+            <span asp-validation-for="Naziv" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Cijena</label>
+            <input asp-for="Cijena" class="form-control" />
+            <span asp-validation-for="Cijena" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label>Dobavljac</label>
+            <select asp-for="DobavljacID" class="form-control" asp-items="Model.dobavljaci">
+                <span asp-validation-for="DobavljacID" class="text-danger"></span>
+                <option hidden readonly value="">Odaberi dobavljača za ovaj proizvod</option>
+                @*@foreach (var x in gradovi)
+            {
+                <option value="@x.ID">@x.Opis</option>
+            }*@
+
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label>Kategorija suplementa</label>
+            <select asp-for="KategorijaID" class="form-control" asp-items="Model.KategorijeSuplementacija">
+                <br />
+                <span asp-validation-for="KategorijaID" class="text-danger"></span>
+                <option hidden readonly value="">Odaberi kategoriju suplementacije</option>
+                @*@foreach (var x in gradovi)
+            {
+                <option value="@x.ID">@x.Opis</option>
+            }*@
+
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label>Brend</label>
+            <input asp-for="Brend" class="form-control" />
+            <span asp-validation-for="Brend" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Tezina(kg)</label>
+            <input asp-for="Tezina" class="form-control" />
+            <span asp-validation-for="Tezina" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Uputstvo</label>
+            <input asp-for="Uputstvo" class="form-control" />
+            <span asp-validation-for="Uputstvo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Kolicina na stanju</label>
+            <input asp-for="kolicina" class="form-control" />
+            <span asp-validation-for="kolicina" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Slika proizvoda</label>
+            <input asp-for="@Model.slika" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Dodaj</button>
+
+    </form>
+</div>
+</body>
+</html>
+
+
+<script>
+    $.validator.addMethod(
+        "regex",
+        function(value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#dodavanjeSuplementa").validate({
+        rules: {
+            Naziv: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z .]{1,}/
+            },
+           Cijena: {
+                required: true,
+               min: 1,
+                number:true
+
+            },
+            DobavljacID: {
+                required: true
+
+            },
+            KategorijaID: {
+                required: true
+              
+            },
+            Brend: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z ]{1,}/
+
+            },
+            Tezina: {
+                required: true,
+                min: 1,
+                number:true
+            },
+            Uputstvo: {
+                required: true,
+                minlength:10
+            },
+            kolicina: {
+                required: true,
+                min:1
+            }
+
+
+        },
+        messages: {
+            Naziv: {
+                required: "Naziv suplementa je obavezno polje!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            Cijena: {
+                required: "Cijena suplementa je obavezna!",
+                min: "unesi cijenu vecu od 0!",
+                number:"Dozvoljen unos brojeva samo!"
+               
+            },
+            DobavljacID: {
+                required: "Odaberi dobavljača za suplement!"
+            },
+            KategorijaID: {
+                required: "Odaberi kategoriju suplementa!"
+
+            },
+            Brend: {
+                required: "Unesi brend suplementa",
+                minlength:"Unesi 3 slova minimalno",
+                regex: "Unesi prvo slovo veliko"
+            },
+            Tezina: {
+                required: "Unesi težinu suplementa!",
+                min:"Unesi tezinu vecu od 0"
+            },
+            Uputstvo: {
+                required: "Unesi uputstvo vezano za upotrebu suplementa",
+                minlength:"Moras unijeti minimalno 10 slova!"
+            },
+            kolicina: {
+                required: "Unesi količinu na stanju suplementa",
+                min:"Minimalna kolicina na stanju je 1"
+            }
+
+
+        }
+
+
+    });
+</script>

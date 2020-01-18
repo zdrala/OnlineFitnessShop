@@ -1,0 +1,52 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@using Microsoft.EntityFrameworkCore;
+@{
+    Korisnik kor = Autenfikacija.GetLogiraniKorisnik(Context);
+    var gradovi = (List<Grad>)ViewData["Gradovi"];
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Kupac/cssZaView.css">
+</head>
+<body>
+    <div class="container-l">
+        <div class="l">
+
+            <div class="form-group">
+                <label>Ime</label>
+                <input value="@kor.Ime" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Prezime</label>
+                <input value="@kor.Prezime" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Datum rođenja</label>
+                <input value="@kor.DatumRodjenja.ToShortDateString()" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>E-mail adresa</label>
+                <input value="@kor.EmailAdresa" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Broj telefona</label>
+                <input value="@kor.BrojTelefona" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Grad</label>
+                <input value="@kor.Grad.Naziv" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Adresa</label>
+                <input value="@kor.Adresa" readonly />
+            </div>
+        </div>
+    </div>
+</body>

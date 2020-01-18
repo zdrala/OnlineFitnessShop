@@ -1,0 +1,128 @@
+.container-l {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.l {
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 55px 0px 55px;
+}
+
+.l2{
+    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+input {
+    float:right;
+    margin-right: 25px;
+    width: 150px;
+    margin-bottom:20px;
+}
+
+.inputB {
+    float:none;
+    width: 200px;
+    margin-bottom:2px;
+    margin-right:0px;
+}
+
+.labelB {
+    margin-top: 7px;
+    margin-bottom: 0px;
+    margin-left:0px;
+    width:200px;
+    font-size:13px;
+}
+
+select {
+    float: right;
+    margin-right: 25px;
+    width: 150px;
+    height:26px;
+}
+.selectB {
+    float: none;
+    margin-right: 0px;
+    width: 200px;
+    height: 26px;
+}
+label {
+    margin-left: 25px;
+    margin-top: 2px;
+    margin-bottom: 18px;
+}
+
+.error {
+    color: red;
+    border: 1px solid red;
+    height: 26px;
+}
+
+#Ime-error, #Prezime-error, #Email-error, #Username-error, #Password-error, #DatumRodjenja-error, #BrojTelefona-error, #Adresa-error, #GradID-error, #StariPassword-error, #password-error, #TempText2-error {
+    position: absolute;
+    display: flex;
+    margin-left: 0px;
+    width: 200px;
+    color: red;
+    font-size: 10px;
+    margin-top: 1px;
+    border: none;
+}
+
+.button-cont{
+    width:200px;
+    text-align:center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.alert {
+    width: 200px;
+    padding: 5px;
+    font-size: 13px;
+    margin-bottom: 2px;
+    border: 1px solid black !important;
+    border-radius:unset;
+    margin-top:7px;
+    color:black;
+}
+
+.alert-danger{
+    background-color:orangered;
+}
+
+
+
+@media only screen and (max-width: 991px) {
+    .l {
+        padding: 10px 5px 0px 5px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+
+    .l {
+        padding: 10px 5px 0px 5px;
+    }
+
+    .container-l {
+        padding: 3px;
+    }
+}   

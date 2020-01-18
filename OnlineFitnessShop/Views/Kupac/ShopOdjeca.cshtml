@@ -1,0 +1,66 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+
+    Layout = "~/Views/Shared/KupacLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.Kupac.OdjecaShopVM
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz odjece</title>
+    <link rel="stylesheet" href="~/css/Kupac/ProizvodiShop.css">
+    <script src="~/js/Kupac/OdjecaShop.js"></script>
+</head>
+<body>
+
+    <h2>Odjeća</h2>
+    <hr />
+
+    <div class="container" id="cont1">
+        <p class="pClass">
+            Filter za spol:
+        </p>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterMuški()">Muškarci
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd2" type="radio" name="optradio" onclick="filterŽenski()">Žene
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterSvi()" checked>Svi proizvodi
+        </label>
+
+    </div>
+
+    <div class="container2" id="cont2">
+        <p class="pClass">Pretraga po nazivu:</p>
+        <input type="text" id="myInput" onkeyup="search()" placeholder="Pretraga...">
+    </div>
+
+    <br class="clearBoth" style="clear:both" />
+
+    <hr />
+    <div class="table">
+        <div id="pcL" class="p-container">
+            @foreach (var x in @Model.podaciOdjeca)
+            {
+            <a href="/Kupac/OdjecaPrikaz?OdjID=@x.OdjecaID">
+                <div class="proizvod">
+
+                    <img src="/images/@x.ImageUrl" />
+                    <h5>@x.Naziv</h5>
+                    <p>@x.Cijena KM</p>
+                    <h1 style="display:none">@x.Spol</h1>
+
+                </div>
+            </a>    
+
+            }
+
+
+        </div>
+    </div>
+</body>
+</html>

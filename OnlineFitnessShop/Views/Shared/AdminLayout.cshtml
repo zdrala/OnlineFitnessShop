@@ -1,0 +1,134 @@
+﻿@using OnlineFitnessShop.Helpers;
+@using Microsoft.AspNetCore.Http
+@using OnlineFitnessShop.Models;
+@using ClassLibrarySeminarski.Model;
+@{
+    //Layout = null;
+    Korisnik kor = Autenfikacija.GetLogiraniKorisnik(Context);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/Administracija/administracijaLayout.css">
+    <link rel="stylesheet" href="~/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/AjaxScript.js"></script>
+</head>
+
+<body>
+    <div class="brand">Admin panel</div>
+    <div class="nav-side-menu">
+
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+
+                <li>
+                    <a href="/Administrator/Index">
+                        <div>
+                            <i class="fa fa-home fa-lg"></i> Home
+                        </div>
+                    </a>
+                </li>
+
+                <li data-toggle="collapse" data-target="#vendors" class="collapsed">
+                    <a href="#"><i @*class="fa fa-user fa-lg"*@ class="fas fa-shuttle-van"></i> Dobavljači</a>
+                </li>
+                <ul class="sub-menu collapse" id="vendors">
+                    <li>
+                        <a href="/Administrator/PrikazDobavljaca">
+                            <div>Prikaži dobavljače</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Administrator/DodajDobavljaca">
+                            <div>Novi dobavljač</div>
+                        </a>
+                    </li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#items" class="collapsed">
+                    <a href="#"><i class="fa fa-calendar-alt fa-lg"></i>Proizvodi</a>
+                </li>
+                <ul class="sub-menu collapse" id="items">
+                    <li>
+                        <a href="/Administrator/PrikazSuplementacije">
+                            <div>Prikaži suplementaciju</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Administrator/PrikazOdjece">
+                            <div>Prikaži odjeću</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Administrator/PrikazObuce">
+                            <div>Prikaži obuću</div>
+                        </a>
+                    </li>
+                </ul>
+                <li data-toggle="collapse" data-target="#users" class="collapsed">
+                    <a href="#"><i class="fa fa-user fa-lg"></i>Korisnici</a>
+                </li>
+                <ul class="sub-menu collapse" id="users">
+                    <li>
+                        <a href="/Administrator/PrikazAdmina">
+                            <div>Prikaži registrovane administratore</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Administrator/PrikazKupaca">
+                            <div>Prikaži registrovane kupce</div>
+                        </a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div @*class="container"*@ id="main">
+        <div id="header">
+
+            <span style="color: white; font-weight: bolder; font-size:25px;">ADMINISTRATORSKI PANEL</span>
+
+            @{
+                if (kor != null)
+                {
+
+                    <div class="user">
+                        <span style="font-size: 18px;">Dobrodošli, </span><span style="color: white">@kor.Ime @kor.Prezime</span>
+                    </div>
+                    <div id="odjavaDugme">
+                        <a asp-controller="Autentifikacija" asp-action="LogOut" class="btn btn-info">ODJAVA</a>
+                    </div>
+                }
+            }
+        </div>
+            
+        
+        <div id="main1">
+
+            @RenderBody()
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+
+    //var dobavljaci = (List<Dobavljac>)ViewData["Dobavljaci"];
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodatakPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dodataka</title>
+</head>
+<body>
+
+    <div class="tabela">
+        <h3>Prikaz dodataka</h3>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Slika</th>
+                    <th>Naziv</th>
+                    <th>Cijena</th>
+                    <th>Tip dodatka</th>
+                    <th>Kolicina</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in @Model.podaciDodatci)
+                {
+                    <tr>
+
+                        <td>
+                            <img src="/images/@x.ImageUrl" width="50px" height="50px" />
+                        </td>
+                        <td>
+                            @x.Naziv
+                        </td>
+                        <td>
+                            @x.Cijena
+                        <td>
+                            @x.TipDodatka
+                        </td>
+                        <td>
+                            @x.Kolicina
+                        </td>
+                        <td>
+                            <a href="/Administrator/UrediDodatak?id=@x.DodatakID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                            <a href="/Administrator/ObrisiDodatak?id=@x.DodatakID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a href="/Administrator/DodajDodatak" class="btn btn-success">Dodaj novi dodatak</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+
+   
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.OdjecaPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz odjece</title>
+</head>
+<body>
+    <div class="tabela">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Slika</th>
+                    <th>Naziv</th>
+                    <th>Cijena</th>
+                    <th>Spol</th>
+                    <th>Brend</th>
+                    <th>Akcija</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in @Model.podaciOdjece)
+                {
+                    <tr>
+
+                        <td>
+                            <img src="/images/@x.ImageUrl" width="50px" height="50px" />
+                        </td>
+                        <td>
+                            @x.Naziv
+                        </td>
+                        <td>
+                            @x.Cijena
+                        <td>
+                            @x.Spol
+                        </td>
+                        <td>
+                            @x.Brend
+                        </td>
+                   
+                        @*<td><a href="/Administrator/Uredi?dobavljacid=@x.DobavljacID"><input type="button" class="btn btn-warning" value="Uredi" /></a></td>*@
+                    <td>
+                        <a href="/Administrator/UrediOdjecu?OdjecaID=@x.OdjecaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                        <a href="/Administrator/ObrisiOdjecu?OdjecaID=@x.OdjecaID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                        <a href="/Administrator/PrikazVelicine?OdjecaID=@x.OdjecaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-list-alt"></span>Upravljanje veličinama</a>
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a href="/Administrator/DodajOdjecu" class="btn btn-success">Dodaj novu odjeću</a>
+    </div>
+</body>
+</html>

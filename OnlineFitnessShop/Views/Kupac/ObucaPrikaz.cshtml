@@ -1,0 +1,95 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using OnlineFitnessShop.Helpers;
+@{
+
+    Layout = "~/Views/Shared/KupacLayout.cshtml";
+    var x = ViewData["log"];
+
+}
+@model OnlineFitnessShop.ViewModels.Kupac.ObucaPrikazVM
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz obuće</title>
+    <link rel="stylesheet" href="~/css/Kupac/ProizvodiShop.css">
+    <script src="~/js/Kupac/ObucaPrikaz.js"></script>
+
+</head>
+<body>
+
+    <h2 id="nazivID">@Model.Naziv</h2>
+    <hr />
+
+    <span id="OdjecaID" hidden>@Model.ObucaID</span>
+    <span id="ProizvodID" hidden>@Model.ProizvodID</span>
+    <span id="imgID" hidden>@Model.ImageUrl</span>
+    <span id="log" hidden>@x</span>
+
+
+
+    <div class="container-center">
+        <div class="center-form">
+            <div class="row">
+                <div class="form-half">
+
+                    <img src="/images/@Model.ImageUrl" width="400px" height="400px" />
+
+                </div>
+                <div class="form-half2">
+                    <h3>Informacije o proizvodu: </h3>
+                    <label class="label-class">Naziv: </label>
+                    <p class="p-inline">@Model.Naziv</p><br />
+                    <label class="label-class">Spol: </label>
+                    <p class="p-inline">@Model.Spol</p><br />
+                    <label class="label-class">Cijena:</label>
+                    <p class="p-inline" id="cijenaID" style="font-weight:bold;font-size:20px;">@Model.Cijena</p>
+                    <p class="p-inline"> KM</p><br />
+                    <label class="label-class2">Odaberite veličinu:</label>
+
+
+                    <ul class="ul-cont">
+                        @foreach (var x in @Model.velicine)
+                        {
+
+                            <li class="li-cont">@x.Velicina</li>
+                            <li hidden>@x.kolicina</li>
+                        }
+                    </ul>
+
+                    <div id="appear" style="display:none;">
+                        <label class="label-class2" style="margin-top:10px;">Dostupna količina:</label>
+                        <input type="number" id="inputKol" class="input-cont2" readonly /><br />
+                    </div>
+
+                    <label class="label-class2" style="margin-top:10px;">Unesite količinu:</label>
+                    <input type="number" id="kol" class="input-cont" value="1" /><br />
+
+                    <button id="button-dodaj" class="dodaj" onclick="bttn()">DODAJ U KORPU</button>
+
+                    <button id="divZaError"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var getLi = document.getElementsByClassName('li-cont');
+        var hidden = document.getElementById("appear");
+        for (i = 0; i < getLi.length; i++) {
+            getLi[i].addEventListener('click', function () {
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                this.className += " active";
+                document.getElementById("inputKol").value = this.nextElementSibling.innerHTML;
+
+                if (hidden.style.display == "none") {
+                    hidden.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

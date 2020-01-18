@@ -1,0 +1,90 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "Dodaj veličine";
+
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodajVelicinuObuceVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodaj veličine za odjeću</title>
+
+</head>
+<body>
+
+<div class="dodajProizvodForm">
+    <div class="panel-heading">
+        <div class="panel-title">
+            Dodavanje veličina
+        </div>
+    </div>
+    <form asp-action="SpremiVelicinuObuce" id="dodavanjeVelicinaObuca">
+        <div class="form-group">
+            <input asp-for="ObucaID" class="form-control" hidden />
+            <label>Veličina</label>
+            <input asp-for="Velicina" class="form-control" />
+            <span asp-validation-for="Velicina" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Kolicina na stanju unesene veličine</label>
+            <input asp-for="kolicina" class="form-control" />
+            <span asp-validation-for="kolicina" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Spremi veličinu</button>
+            
+    </form>
+</div>
+</body>
+</html>
+
+<script>
+    $.validator.addMethod(
+        "regex",
+        function(value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#dodavanjeVelicinaObuca").validate({
+        rules: {
+            Velicina: {
+                required: true,
+                number:true,
+                min: 35,
+                max:47
+
+            },
+            kolicina: {
+                required: true,
+                min:1
+            }
+        },
+        messages: {
+            Velicina: {
+                required: "Velicina je obavezno polje!",
+                number:"Moguće samo brojeve unositi",
+                min: "Minimalna veličina je 35!",
+                max:"Maksimalna veličina je 47!"
+            },
+            kolicina: {
+                required: "Unesi količinu unesene veličine na stanju",
+                min:"Unesi količinu veću od 0!"
+            }
+        }
+
+
+    });
+</script>

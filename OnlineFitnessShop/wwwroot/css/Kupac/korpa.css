@@ -1,0 +1,349 @@
+
+#Naslov{
+    text-align:center;
+}
+
+hr{
+    width:60%;
+    color:black;
+}
+
+.empty {
+    background-color: rgb(242,222,222);
+    border: 1px solid #ffcccc;
+    color: #cc0044;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    display:none;
+}
+
+td {
+    padding: 10px;
+}
+
+td img{
+    width:120px;
+    height:120px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+#korpaContainerID {
+    margin-top: 40px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#korpaTabela {
+    width: 100%;
+    text-align: center;
+    background-color: gainsboro;
+}
+
+th {
+    text-align: center;
+    background-color:white;
+}
+tr td:first-child{
+    width:180px;
+}
+tbody tr:first-child {
+    width: 100px;
+}
+
+.mobileButton{
+    display:none;
+}
+button {
+    background-color: white;
+    border: 1px solid #2b7ecc;
+    font-size: 11px;
+    padding: 7px 10px 7px 10px;
+}
+button:hover{
+    background-color:black;
+    color:white;
+}
+
+#ukupnoDIV {
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+    padding: 5px 0px 5px 0px;
+    border-top:1px solid black;
+    margin-top:10px;
+    margin-bottom:80px;
+}
+
+p{
+    display:inline;
+    color:black;
+    margin-right:20px;
+    font-size:16px;
+}
+strong{
+    display:inline;
+    margin-right:45px;
+    color:black;
+}
+
+.cont {
+    top: 300px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.popup {
+    display: none;
+    width: 600px;
+    height: 165px;
+    background-color: white;
+    z-index: 1000;
+    margin: 0 auto;
+    position: fixed;
+    border: 1px solid black;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:40%;
+}
+
+.txtP{
+    font-size:16px;
+    color:black;
+    line-height:100px;
+    display:block;
+    letter-spacing:1px;
+    margin-right:0px;
+    margin-bottom:0px;
+    text-align:center;
+}
+
+.options{
+    width:100%;
+    bottom:0;
+    padding:0px 24px 10px 24px;
+}
+
+.a-c {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.a-c:hover{
+    text-decoration:none;
+}
+
+.a-c:first-child{
+    float:left;
+    width:48%;
+    border:1px solid black;
+    background-color:white;
+    color:black;
+}
+
+.a-c:first-child:hover{
+    background-color:#2b7ecc;
+    border:none;
+    color:white;
+}
+
+.a-c:last-child{
+    float:right;
+    width:48%;
+    background-color:black;
+    border:1px solid black;
+    color:white;
+}
+
+.cover{
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    background-color:rgba(0,0,0,0.7);
+    z-index:99;
+    top:0;
+    left:0;
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1360px) {
+
+    #korpaContainerID {
+        margin-top: 40px;
+        width: 70%;
+    }
+
+    hr {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #korpaContainerID {
+        margin-top: 40px;
+        width: 80%;
+    }
+
+    hr {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #korpaContainerID {
+        margin-top: 40px;
+        width: 90%;
+    }
+
+    hr {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #korpaContainerID {
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    hr {
+        width: 98%;
+    }
+
+    td img {
+        width: 85px !important;
+        height: 85px !important;
+    }
+
+    .popup{
+        width: 400px;
+    }
+
+    .txtP {
+        line-height:unset;
+        margin-top:30px;
+        margin-bottom:28px;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    #korpaContainerID {
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    hr {
+        width: 98%;
+    }
+
+    td img {
+        width: 65px !important;
+        height: 65px !important;
+    }
+
+    
+    thead{
+        font-size:12px;
+    }
+
+    tbody{
+        font-size:12px;
+    }
+
+    .popup {
+        width: 380px;
+    }
+
+    .txtP {
+        line-height: unset;
+        margin-top: 30px;
+        font-size:14px;
+        margin-bottom: 33px;
+    }
+
+    .options{
+        padding:0;
+    }
+
+    .a-c:first-child {
+        width: 43%;
+        margin-left: 20px;
+    }
+
+    .a-c:last-child {
+        width: 43%;
+        margin-right: 20px;
+    }
+
+    button {
+        display: none;
+    }
+
+    .mobileButton {
+        display: block;
+        padding: 5px 7px 5px 7px;
+        background-color: orangered;
+        color: white;
+    }
+}
+
+@media only screen and (max-width: 395px){
+
+    tr td:nth-child(2) {
+        display: none;
+    }
+
+    tr th:nth-child(2) {
+        display: none;
+    }
+
+    button {
+        display: none;
+    }
+
+    .mobileButton {
+        display: block;
+        padding: 5px 7px 5px 7px;
+        background-color: orangered;
+        color: white;
+    }
+
+    .popup {
+        width: 290px;
+        height:140px;
+    }
+
+    .txtP {
+        line-height: unset;
+        margin-top: 20px;
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+
+    .options {
+        padding: 0;
+    }
+
+    .a-c{
+        padding:7px 0px;
+    }
+    .a-c:first-child{
+        width:40%;
+        margin-left:20px;
+    }
+    .a-c:last-child{
+        width:40%;
+        margin-right:20px;
+    }
+}

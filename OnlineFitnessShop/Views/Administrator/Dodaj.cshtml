@@ -1,0 +1,69 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    ViewData["Title"] = "Dodaj";
+
+    var gradovi = (List<Grad>)ViewData["Gradovi"];
+
+    var dobavljaciKategorije = (List<DobavljacKategorije>)ViewData["DobavljaciKategorije"];
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodaj dobavljača</title>
+</head>
+<body>
+    <form action="/Administrator/Spremi">
+
+        <input type="hidden" name="studentid" readonly />
+        <div class="form-group">
+            <label>Naziv dobavljača</label>
+            <input type="text" name="nazivD" /><br />
+        </div>
+        <div class="form-group">
+            <label>Broj telefona</label>
+            <input type="text" name="BrojT" />
+        </div>
+
+        <div class="form-group">
+            <label>Email adresa</label>
+            <input type="text" name="Email" />
+        </div>
+
+
+        <div class="form-group">
+            <label>Grad</label>
+            <select name="Grad">
+                <option hidden readonly>Odaberi grad dobavljača</option>
+                @foreach (var x in gradovi)
+                {
+                    <option>@x.Naziv</option>
+                }
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Adresa</label>
+            <input type="text" name="Adresa" />
+        </div>
+
+
+        <div class="form-group">
+            <label>kategorija dobavljača:</label>
+            <select name="DobavljacK">
+                <option hidden readonly>Odaberi kategoriju dobavljača</option>
+                @foreach (var k in dobavljaciKategorije)
+                {
+                    <option>@k.nazivKategorije</option>
+                }
+            </select>
+        </div>
+        <input type="submit" />
+
+    </form>
+</body>
+</html>

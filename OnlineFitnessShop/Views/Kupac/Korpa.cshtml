@@ -1,0 +1,55 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@using Microsoft.EntityFrameworkCore;
+@{
+   Layout = "~/Views/Shared/KupacLayout.cshtml";
+}
+    <head>
+        <script src="~/js/Kupac/Korpa.js"></script>
+        <link rel="stylesheet" href="~/css/Kupac/korpa.css">
+    </head>
+<body>
+    <h3 id="Naslov">Vaša Korpa</h3>
+    <hr />
+
+    <div id="praznaKorpaID" class="empty">
+        Vaša korpa je prazna!
+    </div>
+
+    <div class="cont">
+        <div id="popupID" class="popup">
+            <p class="txtP"> Da li sigurno želite da izbrišete proizvod iz korpe?</p>
+            <div class="options">
+                <a  id="link1" class="a-c" href="#">NE</a>
+                <a  id="link2" class="a-c" href="#">DA</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="coverID" class="cover">
+    </div>
+
+    <div id="content-div">
+        <div id="korpaContainerID">
+            <table id="korpaTabela">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Proizvod</th>
+                        <th>Veličina</th>
+                        <th>Cijena</th>
+                        <th>Količina</th>
+                        <th>Ukupno</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="ukupnoDIV">
+            <p>Ukupno: </p>
+            <strong id="placeUkupno"></strong>
+        </div>
+    </div>
+</body>

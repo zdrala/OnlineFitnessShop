@@ -1,0 +1,69 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+
+    Layout = "~/Views/Shared/KupacLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.Kupac.DodatakShopVM
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dodataka</title>
+    <link rel="stylesheet" href="~/css/Kupac/ProizvodiShop.css">
+    <script src="~/js/Kupac/DodatakShop.js"></script>
+
+</head>
+<body>
+
+    <h2>Dodatci</h2>
+    <hr />
+
+    <div class="container" id="cont1">
+        <p class="pClass">
+            Filter za kategoriju:
+        </p>
+        <label class="radio-inline">
+            <input id="rd1" type="radio" name="optradio" onclick="filterPojas()">Pojasevi
+        </label>
+        <label class="radio-inline">
+            <input id="rd2" type="radio" name="optradio" onclick="filterSejker()">Šejkeri
+        </label>
+        <label class="radio-inline">
+            <input id="rd3" type="radio" name="optradio" onclick="filterStez()">Steznici
+        </label>
+        <label class="radio-inline">
+            <input id="rd4" type="radio" name="optradio" onclick="filterTorbe()">Torbe
+        </label>
+        <label class="radio-inline">
+            <input id="rd1" type="radio" name="optradio" onclick="filterSvi()" checked>Sve kategorije
+        </label>
+
+    </div>
+
+    <div class="container2" id="cont2">
+        <p class="pClass">Pretraga po nazivu:</p>
+        <input type="text" id="myInput" onkeyup="search()" placeholder="Pretraga...">
+    </div>
+
+    <br class="clearBoth" style="clear:both" />
+
+    <hr />
+    <div class="table">
+        <div id="pcL" class="p-container">
+            @foreach (var x in @Model.podaci)
+            {
+            <a href="/Kupac/DodatakPrikaz?DodatakID=@x.DodatakID">
+                <div class="proizvod">
+                    <img src="/images/@x.ImageUrl" />
+                    <h5>@x.Naziv</h5>
+                    <p>@x.Cijena KM</p>
+                    <h1 style="display:none">@x.TipDodatka</h1>
+
+                </div>
+            </a>    
+            }
+        </div>
+    </div>
+</body>
+</html>

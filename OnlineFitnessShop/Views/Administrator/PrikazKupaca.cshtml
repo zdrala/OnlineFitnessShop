@@ -1,0 +1,58 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.KupacPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz kupaca</title>
+</head>
+<body>
+<div class="tabela">
+    <h3>Registrovani korisnici</h3>
+    <table class="table table-hover table-bordered ">
+        <thead class="thead-dark">
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>E-mail adresa</th>
+            <th>Broj telefona</th>
+            <th>Akcija</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var x in Model.podaciKupci)
+        {
+            <tr>
+                <td>
+                    @x.Ime
+                </td>
+                <td>
+                    @x.Prezime
+                </td>
+                <td>
+                @x.EmailAdresa
+                <td>
+                    @x.BrojTelefona
+                </td>
+                <td>
+                    <a href="/Administrator/UrediKupca?KorisnikID=@x.KorisnikID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                    <a href="/Administrator/ObrisiKupca?KorisnikID=@x.KorisnikID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                    <a href="/Administrator/DodijeliAdmina?KorisnikID=@x.KorisnikID" class="btn btn-light btn-sm " style="background-color: gray; border: 1px solid black"><span class="glyphicon glyphicon-font"></span>Dodijeli ulogu admina</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <a href="/Administrator/DodajKupca" class="btn btn-success">Dodaj novog kupca</a><a href="/Administrator/Index" class="btn btn-secondary">Vrati se na početak</a>
+
+</div>
+</body>
+</html>
+

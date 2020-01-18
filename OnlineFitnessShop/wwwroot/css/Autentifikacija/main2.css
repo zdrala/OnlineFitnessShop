@@ -1,0 +1,213 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: gainsboro;
+}
+
+.container-login100 {
+    width: 100%;
+    min-height: 50vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-group{
+    margin-bottom:0px;
+}
+
+.regform {
+    width: auto;
+    background-color:white;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 50px 55px 30px 55px;
+}
+label{
+    font-size:14px;
+    margin-top:10px;
+    width:100%;
+}
+
+input{
+    width:200px;
+    height:30px;
+    border:1px solid !important;
+    display:block;
+}
+
+form{
+    display:-ms-flexbox;
+}
+
+.form-half {
+    width: auto;
+    float: left;
+    margin:10px 10px 10px 10px;
+}
+
+.reg-form-btn{
+    display:block;
+}
+
+select {
+    width: 200px;
+    height: 30px;
+    border: 1px solid !important;
+}
+
+.reg-form-btn {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background-color: #4a4a4a;
+    margin-top: 50px;
+    outline: none;
+}
+
+.reg-form-title {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.error{
+    color:red;
+    
+}
+
+#Ime-error {
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+    position: absolute;
+}
+
+#Prezime-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+
+#Email-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+
+#Username-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+
+#Password-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+#passw-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+#DatumRodjenja-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+#BrojTelefona-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+#Adresa-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+#GradID-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
+
+
+
+@media only screen and (max-width: 550px) {
+    
+    .form-half{
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:0px;
+        margin-bottom:0px;
+    }
+
+
+    .reg-form-btn{
+        margin-top:30px;
+    }
+}

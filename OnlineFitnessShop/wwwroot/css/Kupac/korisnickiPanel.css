@@ -1,0 +1,145 @@
+.nav-bar{
+    height:100%;
+    width:500px;
+}
+.nav-korisnik {
+    height: 400px;
+    width: 250px;
+    float: left;
+    margin-left: 100px;
+    display: block;
+    overflow:auto;
+    position:absolute;
+}
+
+.nav-korisnik ul li {
+    margin-left: 35px;
+    margin-top:10px;
+}
+
+.nav-korisnik ul li a{
+    text-decoration:none;
+    font-size:14px;
+    color:black;
+    padding:5px 10px;
+}
+
+.nav-korisnik ul li a:hover{
+    background-color:silver;
+    font-weight:bold;
+
+}
+
+
+.nav-korisnik ul{
+    list-style-type: none;
+}
+
+
+h5{
+    font-size:16px;
+    font-weight:bold;
+    margin-left:30px;
+    margin-bottom:15px;
+}
+
+.main-render {
+    min-height:400px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0;
+    width:83%;
+    margin-left:130px;
+    margin-right:130px;
+    margin-top:30px;
+}
+
+.icon-bar {
+    width: 25px;
+    height: 4px;
+    background-color: black;
+    margin: 2px 0;
+}
+
+.menu-icon{
+    display:none;
+}
+
+.mobile-txt{
+    display:none;
+}
+
+@media only screen and (max-width: 991px){
+
+    .nav-bar {
+        height: 100%;
+        width: 100%;
+    }
+    .nav-korisnik{
+        width:70%;
+        display:block;
+        position:static;
+        float:none;
+        margin-left:auto;
+        margin-right:auto;
+        height:auto;
+        background-color:lightgray;
+    }
+
+    hr{
+        display:none;
+    }
+
+    h5{
+        display:none;
+    }
+
+    .nav-korisnik ul li {
+        margin-left: 0px;
+        margin-top: 0px;
+        text-align:center;
+        padding:5px 0px 5px 0px;
+        margin-bottom:3px;  
+        border-bottom:1px solid white;
+    }
+
+        .nav-korisnik ul li a.active {
+            font-weight: bold;
+            background-color: burlywood;
+        }
+
+    .meni-txt{
+        display:inline;
+    }
+    .menu-icon {
+        background: lightgray;
+        display: block;
+        padding: 5px 8px;
+        width:70%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .mobile-txt{
+        display:block;
+        text-align:center;
+        margin-top:50px;
+        margin-bottom:20px;
+    }
+
+    .tekst{
+        font-weight:bold;
+        font-size:16px;
+        text-transform:uppercase;
+    }
+
+    .main-render {
+        margin-top:40px;
+    }
+}

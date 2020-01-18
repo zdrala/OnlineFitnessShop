@@ -1,0 +1,146 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@{
+    ViewData["Title"] = "Dodaj";
+
+    var gradovi = (List<SelectListItem>)ViewData["Gradovi"];
+
+    var dobavljaciKategorije = (List<SelectListItem>)ViewData["DobavljaciKategorije"];
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model OnlineFitnessShop.ViewModels.DobavljacDodajVM;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodaj dobavljača</title>
+
+</head>
+<body>
+    <div class="dodajDobavljacaForm">
+        <form asp-action="Spremi" id="dodavanjeDobavljaca">
+            <input asp-for="DobavljacID" class="form-control" hidden /><br />
+            <div class="form-group">
+                <label>Naziv dobavljača</label>
+                <input asp-for="Naziv" class="form-control" /><br />
+            </div>
+            <div class="form-group">
+                <label>Broj telefona</label>
+                <input asp-for="BrojTelefona" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Email adresa</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label>Grad</label>
+                <select asp-for="GradID" class="form-control" asp-items="gradovi">
+                    <option hidden readonly>Odaberi grad dobavljača</option>
+                    @*@foreach (var x in gradovi)
+                {
+                    <option value="@x.ID">@x.Opis</option>
+                }*@
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Adresa</label>
+                <input asp-for="Adresa" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label>kategorija dobavljača:</label>
+                <select asp-for="DobavljacKategorijaID" class="form-control" asp-items="dobavljaciKategorije">
+                    <option hidden readonly>Odaberi kategoriju dobavljača</option>
+                    @*@foreach (var k in dobavljaciKategorije)
+                {
+                    <option value="@k.ID">@k.Opis</option>
+                }*@
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-secondary"><span class="glyphicon glyphicon-edit"></span>Spremi</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
+
+<script>
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#dodavanjeDobavljaca").validate({
+        rules: {
+            Naziv: {
+                required: true,
+                minlength: 4,
+                regex: /^[A-Z]/
+            },
+            BrojTelefona: {
+                required: true,
+                regex: /^\+387 06[0-9]{1}-[0-9]{3}-[0-9]{3}/
+
+            },
+            Grad: {
+                required: true
+            },
+            Adresa: {
+                required: true,
+                minlength: 5
+            },
+            Email: {
+                required: true,
+                regex: /([a-z0-9.]{1,61})@@([a-z]{2,}).com/
+
+            }
+
+
+        },
+        messages: {
+            Naziv: {
+                required: "Naziv dobavljača je obavezno polje!",
+                minlength: "Minimalno unesi 4 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            BrojTelefona: {
+                required: "Broj telefona je obavezan!",
+                regex: "format: +387 06X-111-111"
+            },
+            Grad: {
+                required: "Odaberi grad dobavljača!"
+            },
+            Adresa: {
+                required: "Polje je obavezno",
+
+            },
+            Email: {
+                required: "Email je obavezno polje!",
+                regex: "format: nesto@nesto.com"
+            }
+
+
+        }
+
+
+    });
+</script>
+
+

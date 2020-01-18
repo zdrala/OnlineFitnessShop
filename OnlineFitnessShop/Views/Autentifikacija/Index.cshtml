@@ -1,0 +1,58 @@
+﻿@model OnlineFitnessShop.ViewModels.LoginVM
+@{
+    ViewData["Title"] = "Login";
+    string error_poruka = (string)TempData["error_poruka"];
+    Layout = "blank";
+}
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/css/Autentifikacija/main.css">
+
+    </head>
+    <div class="container-login100">
+        <div class="login100">
+            <form asp-action="Login">
+
+                <span class="login100-form-title">
+                    Prijava
+                </span>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <div>
+                        <input asp-for="username" class="inputA" placeholder="Unesite vaš username" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div>
+                        <input asp-for="password" type="password" class="inputA" placeholder="Unesite vaš password" />
+                    </div>
+                </div>
+
+                <button type="submit" class="login100-form-btn">
+                    Login
+                </button>
+
+
+                <div class="regMess">
+                    <span class="txt1">Nemate račun? </span>
+                    <a class="txt2" href="/Autentifikacija/Registracija">REGISTRACIJA</a>
+
+                </div>
+            </form>
+        <br />
+
+        @if (error_poruka != null)
+        {
+            <br />
+            <div class="alert alert-danger">
+                @error_poruka
+            </div>
+        }
+    </div>
+</div>
+
+
+
+

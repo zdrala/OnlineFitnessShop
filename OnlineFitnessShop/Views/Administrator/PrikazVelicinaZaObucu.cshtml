@@ -1,0 +1,56 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@{
+
+
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.ObucaVelicinePrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz veličina za artikal</title>
+</head>
+<body>
+<div class="tabela">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Slika</th>
+            <th>Velicina</th>
+            <th>Kolicina</th>
+            <th>Akcija</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var x in @Model.velicine)
+        {
+            <tr>
+
+                <td>
+                    <img src="/images/@Model.imageUrl" width="50px" height="50px" />
+                </td>
+                <td>
+                    @x.Velicina
+                </td>
+                <td>
+                    @x.kolicina
+                </td>
+
+                <td>
+                    <a href="" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                    <a href="" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                           
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <a href="/Administrator/PrikazObuce" class="btn btn-secondary">Nazad</a> <a href="/Administrator/DodajVelicinuObuce?ObucaID=@Model.ObucaID" class="btn btn-success">Dodaj novu veličinu</a>
+</div>
+</body>
+</html>

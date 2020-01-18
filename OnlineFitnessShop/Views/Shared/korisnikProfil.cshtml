@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = "KupacLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/Kupac/korisnickiPanel.css">
+</head>
+
+<body>
+       <hr/>
+
+        <div class="mobile-txt">
+            <p class="tekst">Korisnički panel</p>
+        </div>
+        <div class="nav-bar">
+            <a href="#" class="menu-icon" id="dugmeID">
+                <div class="icon-bar"></div>
+                <div class="icon-bar"></div>
+                <div class="icon-bar"></div>
+            </a>
+            <nav class="nav-korisnik" id="navID">
+                <h5>KORISNIČKI PANEL</h5>
+                <ul>
+                    <li><a href="/Kupac/Info" class="stavka">Korisnički podaci</a></li>
+                    <li><a href="/Kupac/Update" class="stavka" >Izmjena podataka</a></li>
+                    <li><a href="/Kupac/UpdatePassword" class="stavka">Promjena password-a</a></li>
+                    <li><a href="/Kupac/UpdateUsername" class="stavka">Promjena username-a</a></li>
+                    <li><a href="#" class="stavka">Status narudžbi</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle"></div>
+        </div>
+
+        <div class="main-render">
+            @RenderBody()
+
+        </div>
+
+    <script>
+        var dugme = document.getElementById("dugmeID");
+        var nav = document.getElementById("navID");
+
+        dugme.onclick = function () {
+
+            if (nav.style.display == "none")
+            {
+                nav.style.display = "block";
+            }
+            else
+            {
+                nav.style.display = "none";
+            }
+        };
+
+        var getKlasa = document.getElementsByClassName('stavka');
+        console.log(getKlasa.length);
+
+        for (i = 0; i < getKlasa.length; i++) {
+            getKlasa[i].onclick = function() {
+            var current = document.getElementsByClassName("active");
+            console.log(current.length); 
+    		current[0].className = current[0].className.replace(" active", "");
+ 
+    	    this.className += " active";
+	};
+}
+    </script>
+
+</body>
+</html>
+
