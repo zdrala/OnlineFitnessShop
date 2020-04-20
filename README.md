@@ -1,1 +1,1 @@
-# OnlineFitnessShop .NET Core Web Application
+# OnlineFitnessShop 
