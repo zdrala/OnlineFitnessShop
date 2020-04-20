@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClassLibrarySeminarski;
 using ClassLibrarySeminarski.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using OnlineFitnessShop.Core.Interfaces;
+using OnlineFitnessShop.Core.Services;
 namespace OnlineFitnessShop
 {
     public class Startup
@@ -29,6 +31,19 @@ namespace OnlineFitnessShop
             services.AddControllersWithViews();
 
             services.AddSession();
+
+            services.AddScoped(typeof(IAdministratorRepository<>), typeof(AdministratorRepository<>));
+            services.AddScoped(typeof(IKupacRepository<>), typeof(KupacRepository<>));
+            services.AddTransient<IDobavljaciService, DobavljaciService>();
+            services.AddTransient<IProizvodiService, ProizvodiService>();
+            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IProizvodiShopService, ProizvodiShopService>();
+            services.AddTransient<IUserDataService, UserDataService>();
+            services.AddTransient<IUserInterfaceService, UserInterfaceService>();
+            services.AddTransient<IOrdersService, OrdersService>();
+            services.AddTransient<IAutentifikacijaService, AutentifikacijaService>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +70,7 @@ namespace OnlineFitnessShop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Kupac}/{action=Home}/{id?}");
+                    pattern: "{controller=UserInterface}/{action=Home}/{id?}");
             });
 
         }

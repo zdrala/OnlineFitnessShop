@@ -1,0 +1,53 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@using Microsoft.EntityFrameworkCore;
+@model OnlineFitnessShop.ViewModels.Kupac.KorisnikInformacijeVM
+@{
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/User/cssZaView.css">
+</head>
+<body>
+    <div class="container-l">
+        <div class="l">
+
+            <img src="~/userPhoto/@Model.imgUrl" class="profil-slika" />
+
+            <div class="form-group">
+                <label>Ime</label>
+                <input value="@Model.Ime" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Prezime</label>
+                <input value="@Model.Prezime" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Datum rođenja</label>
+                <input value="@Model.DatumRodjenja" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>E-mail adresa</label>
+                <input value="@Model.Email" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Broj telefona</label>
+                <input value="@Model.BrojTelefona" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Grad</label>
+                <input value="@Model.Grad" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Adresa</label>
+                <input value="@Model.Adresa" readonly />
+            </div>
+        </div>
+    </div>
+</body>

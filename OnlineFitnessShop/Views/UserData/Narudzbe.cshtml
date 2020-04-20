@@ -1,0 +1,136 @@
+﻿@using OnlineFitnessShop.ViewModels.Kupac;
+@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@model OnlineFitnessShop.ViewModels.Kupac.NarudzbaVM;
+@{
+    int brojac = 1;
+    int redniBroj = (Model.TrenutniPage*10)-9;
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+
+}
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/css/User/cssZaView.css">
+        <script>
+            function popUp(v) {
+                var cov = document.getElementById("coverID");
+                var box = document.getElementById("popupID");
+                var txt = document.getElementById("text");
+
+                txt.innerText = v;
+                cov.style.display = "block";
+                box.style.display = "block";
+
+
+                var a1 = document.getElementById("link1");
+
+                a1.addEventListener('click', function () {
+                    cov.style.display = "none";
+                    box.style.display = "none";
+                });
+
+            }
+        </script>
+    </head>
+<body>
+
+    <div class="cont">
+        <div id="popupID" class="popup">
+            <div class="txt-div">
+                <p class="txtP" id="text"></p>
+            </div>
+            <div class="options">
+                <a id="link1" class="a-c">ZATVORI</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="coverID" class="cover">
+    </div>
+
+    <div class="container-l3">
+        <div class="l4">
+            @if (Model.stavke.Count > 0)
+            {
+                <h6 class="page-txt">Stranica :</h6>
+                <div class="stranice">
+                    @for (int i = 0; i < Model.UkupnoNarudzbi; i += 10)
+                    {
+                        if (brojac == Model.TrenutniPage)
+                        {
+                            <a href="/UserData/Narudzbe?page=@brojac" class="page-li active">@brojac</a>
+
+                        }
+                        else
+                        {
+                            <a href="/UserData/Narudzbe?page=@brojac" class="page-li">@brojac</a>
+                        }
+                        brojac = brojac + 1;
+                    }
+                </div>
+
+                <div class="tabela">
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>RB</th>
+                                <th>Datum kreiranja</th>
+                                <th>Ukupno</th>
+                                <th>Status</th>
+                                <th>Akcija</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.stavke)
+                            {
+                                <tr>
+                                    <td>
+                                        @redniBroj
+                                    </td>
+                                    <td>
+                                        @x.VrijemeNarudzbe
+                                    </td>
+                                    <td>
+                                        @x.Ukupno
+                                    </td>
+                                    @if (x.StatusNarudzbe == 1)
+                                    {
+                                        <td class="pregled">
+                                            Na pregledu
+                                        </td>
+                                    }
+                                    @if (x.StatusNarudzbe == 2)
+                                    {
+                                        <td class="prihvaceno">
+                                            Prihvaćena
+                                        </td>
+                                    }
+                                    @if (x.StatusNarudzbe == 3)
+                                    {
+                                        <td class="odbijeno">
+                                            Odbijena
+                                        </td>
+                                    }
+                                    <td class="td-r">
+                                        <a href="/UserData/NarudzbaDetalji?id=@x.NarudzbaID" class="btn btn-light btn-sm " style="background-color: rgb(52,58,64); border: 1px solid black;color:white">Detalji</a>
+                                        @if (x.StatusNarudzbe == 3)
+                                        {
+                                            <a class="btn btn-light btn-sm " style="background-color: red; border: 1px solid black;color:white" onclick="popUp('@x.Komentar')">Razlog</a>
+                                        }
+                                    </td>
+                                </tr>
+
+                                redniBroj = redniBroj + 1;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div id="praznaKorpaID" class="empty">
+                    Nemate dodanih narudžbi !
+                </div>
+            }
+        </div>
+    </div>
+</body>

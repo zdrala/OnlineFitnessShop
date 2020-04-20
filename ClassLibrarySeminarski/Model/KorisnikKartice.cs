@@ -15,7 +15,10 @@ namespace ClassLibrarySeminarski.Model
         public int KorisnikID { get; set; }
         public string NazivKartice { get; set; }
         public string BrojKartice { get; set; }
-        public DateTime DatumIsteka { get; set; }
+        //public DateTime DatumIsteka { get; set; }
+        public int Code { get; set; }
+        public string MjesecIsteka { get; set; }
+        public string GodinaIsteka { get; set; }
         public bool Aktivna { get; set; }
     }
 }

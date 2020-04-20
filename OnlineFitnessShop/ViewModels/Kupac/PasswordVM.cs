@@ -12,7 +12,10 @@ namespace OnlineFitnessShop.ViewModels.Kupac
         public int ID { get; set; }
         public string StariPassword { get; set; }
         [Required]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$")]
         public string TempText1 { get; set; }
+        [Required]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$")]
         public string TempText2 { get; set; }
 
 

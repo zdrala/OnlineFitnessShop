@@ -1,0 +1,97 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    ViewData["Title"] = "ShowClothesOutOfStock";
+    int brojac = 0;
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.OdjecaPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz odjece</title>
+    <script src="~/js/Administrator/ProizvodiFilteri.js"></script>
+</head>
+<body>
+    <div class="container" id="cont1">
+        <p class="pClass">
+            Filter za spol:
+        </p>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterMuški()">Muškarci
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd2" type="radio" name="optradio" onclick="filterŽenski()">Žene
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterSvi()" checked>Svi proizvodi
+        </label>
+
+    </div>
+
+
+    <div class="proizvodi">
+        <div class="tabela">
+            <h3>Prikaz odjeće koje nema na stanju</h3>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Slika</th>
+                        <th>Naziv</th>
+                        <th>Cijena</th>
+                        <th>Spol</th>
+                        <th>Veličine van stanja</th>
+                        <th>Akcija</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody id="b-id">
+                    <div id="pcL" class="p-container">
+                        @foreach (var x in @Model.podaciOdjece)
+                        {
+
+                            <tr id="red-@brojac">
+
+                                <td>
+                                    <img src="/images/@x.ImageUrl" width="50px" height="50px" />
+                                </td>
+                                <td>
+                                    @x.Naziv
+                                </td>
+                                <td>
+                                    @x.Cijena
+                                </td>
+                                <td class="spol">
+                                    @x.Spol
+                                </td>
+                                <td>
+                                    @foreach (var s in @x.velicine)
+                                    {
+                                        <span>@s,</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    <a href="/AdministratorNabavka/PrikazDobavljacaOdjece?OdjecaID=@x.OdjecaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>prikaži dobavljače odjeće</a>
+
+                                    <a href="/AdministratorProizvod/PrikazVelicine?OdjecaID=@x.OdjecaID" class="btn btn-success btn-sm "><span class="glyphicon glyphicon-list-alt"></span>Dodavanje količine na stanje</a>
+                                </td>
+                            </tr>
+                            brojac = brojac + 1;
+
+                        }
+                    </div>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</body>
+</html>
+

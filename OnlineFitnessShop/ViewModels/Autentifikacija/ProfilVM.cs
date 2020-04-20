@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,14 +19,18 @@ namespace OnlineFitnessShop.ViewModels.Autentifikacija
         [StringLength(30, MinimumLength = 3)]
         public string Prezime { get; set; }
 
-
         [Required]
         public DateTime DatumRodjenja { get; set; }
 
         [Required]
+        public string Spol { get; set; }
+
+        [Required]
+        [RegularExpression("([a-z0-9._-]{1,60})@([a-z]{2,}).(com|ba)")]
         public string Email {get;set;}
 
         [Required]
+        [RegularExpression(@"^\+387 06[0-9]{1}-[0-9]{3}-[0-9]{3}")]
         public string BrojTelefona { get; set; }
 
         [Required]
@@ -39,9 +45,12 @@ namespace OnlineFitnessShop.ViewModels.Autentifikacija
 
         [Required]
         [StringLength(40, MinimumLength = 6)]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$")]
         public string Password { get; set; }
 
+        public IFormFile Slika { get; set; }
 
-
+        public List<SelectListItem> gradovi { get; set; }
+        public List<SelectListItem> spolovi { get; set; }
     }
 }

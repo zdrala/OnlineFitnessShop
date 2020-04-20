@@ -1,0 +1,121 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.AdminPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz admina</title>
+</head>
+<body>
+    <div class="IzborRedova">
+        <select name="state" id="maxRows" class="form-control" style="width:300px">
+            <option value="5000">Prikaži sve admine na jednoj stranici</option>
+            <option value="5">Prikaži 5 admina na jednoj stranici</option>
+            <option value="10">Prikaži 10 admina na jednoj stranici</option>
+            <option value="15">Prikaži 15 admina na jednoj stranici</option>
+        </select>
+
+    </div>
+    <div class="tabela" >
+        <h3>Registrovani administratori</h3>
+        <table class="table table-hover table-bordered " id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>E-mail adresa</th>
+                    <th>Korisničko ime</th>
+                    <th>Akcija</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.podaciAdmin)
+                {
+                    <tr>
+                        <td>
+                            @x.Ime
+                        </td>
+                        <td>
+                            @x.Prezime
+                        </td>
+                        <td>
+                            @x.EmailAdresa
+                        <td>
+                            @x.KorisnickoIme
+                        </td>
+                        <td>
+                            <a href="/AdministratorUsers/UrediAdmina?AdminID=@x.KorisnikID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                            <a href="/AdministratorUsers/ObrisiAdmina?AdminID=@x.KorisnikID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                            <a href="/AdministratorUsers/UkloniUloguAdmina?AdminID=@x.KorisnikID" class="btn btn-warning btn-sm " style=" border: 1px solid black"><span class="glyphicon glyphicon-user"></span>Ukloni admina i dodijeli ulogu kupca</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pagination-container">
+            <nav>
+                <ul class="pagination"></ul>
+            </nav>
+        </div>
+        <a href="/AdministratorUsers/DodajAdmina" class="btn btn-success">Dodaj novog administratora</a><a href="/AdministratorProizvod/Index" class="btn btn-secondary">Vrati se na početak</a>
+
+    </div>
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
+<script>
+    var table = '#myTable'
+    $('#maxRows').on('change', function () {
+        $('.pagination').html('')
+        var trnum = 0
+        var maxRows = parseInt($(this).val())
+        var totalRows = $(table + ' tbody tr').length
+        $(table + ' tr:gt(0)').each(function () {
+            trnum++
+            if (trnum > maxRows) {
+                $(this).hide()
+            }
+            if (trnum <= maxRows) {
+                $(this).show()
+            }
+        })
+        if (totalRows > maxRows) {
+            var pagenum = Math.ceil(totalRows / maxRows)
+            for (var i = 1; i <= pagenum;) {
+                $('.pagination').append('<li data-page="' + i + '">\<span>' + i++ + '<span class="sr-only">(current)</span></span>\</li>').show()
+            }
+        }
+        $('.pagination li:first-child').addClass('active')
+        $('.pagination li').on('click', function () {
+            var pageNum = $(this).attr('data-page')
+            var trIndex = 0;
+            $('.pagination li').removeClass('active')
+            $(this).addClass('active')
+            $(table + ' tr:gt(0)').each(function () {
+                trIndex++
+                if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
+                    $(this).hide()
+                } else {
+                    $(this).show()
+                }
+            })
+        })
+
+    })
+    $(function () {
+        $('table tr:eq(0)').prepend('<th>RB</th>')
+        var rb = 0;
+        $('table tr:gt(0)').each(function () {
+            rb++
+            $(this).prepend('<td>'+rb+'</td>')
+        })
+    })
+</script>

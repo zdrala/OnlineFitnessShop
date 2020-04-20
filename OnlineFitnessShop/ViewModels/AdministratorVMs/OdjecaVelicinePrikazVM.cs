@@ -15,6 +15,7 @@ namespace OnlineFitnessShop.ViewModels.AdministratorVMs
 
         public class Row
         {
+            public int VelicinaID { get; set; }
             public string Velicina { get; set; }
             public int kolicina { get; set; }
         }

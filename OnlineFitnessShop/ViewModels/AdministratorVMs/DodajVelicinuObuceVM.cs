@@ -18,6 +18,6 @@ namespace OnlineFitnessShop.ViewModels.AdministratorVMs
         [Required(ErrorMessage = "Količina je obavezna!")]
         [Range(1, int.MaxValue, ErrorMessage = "Količina na stanju mora biti veća od 0!")]
         public int kolicina { get; set; }
-
+        public string imageUrl { get; set; }
     }
 }

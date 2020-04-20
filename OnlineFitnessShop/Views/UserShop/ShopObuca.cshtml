@@ -1,0 +1,64 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.Kupac.ObucaShopVM
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz obuće</title>
+    <link rel="stylesheet" href="~/css/User/ProizvodiShop.css">
+    <script src="~/js/User/ObucaShop.js"></script>
+
+</head>
+<body>
+
+    <h2>Obuća</h2>
+    <hr />
+
+    <div class="container" id="cont1">
+        <p class="pClass">
+            Filter za spol:
+        </p>
+        <label class="radio-inline">
+            <input id="rd1" type="radio" name="optradio" onclick="filterMuški()">Muškarci
+        </label>
+        <label class="radio-inline">
+            <input id="rd2" type="radio" name="optradio" onclick="filterŽenski()">Žene
+        </label>
+        <label class="radio-inline">
+            <input id="rd1" type="radio" name="optradio" onclick="filterSvi()" checked>Svi proizvodi
+        </label>
+
+    </div>
+
+    <div class="container2" id="cont2">
+        <p class="pClass">Pretraga po nazivu:</p>
+        <input type="text" id="myInput" onkeyup="search()" placeholder="Pretraga...">
+    </div>
+
+    <br class="clearBoth" style="clear:both" />
+
+    <hr />
+    <div class="table">
+        <div id="pcL" class="p-container">
+            @foreach (var x in @Model.podaciObuca)
+            {
+            <a href="/UserShop/ObucaPrikaz?ObucaID=@x.ObucaID">
+                <div class="proizvod">
+                    <img src="/images/@x.ImageUrl" />
+                    <h5>@x.Naziv</h5>
+                    <p>@x.Cijena KM</p>
+                    <h1 style="display:none">@x.Spol</h1>
+
+                </div>
+            </a>    
+
+            }
+        </div>
+    </div>
+</body>
+</html>

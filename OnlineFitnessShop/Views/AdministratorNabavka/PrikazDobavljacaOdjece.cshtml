@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "PrikazDobavljacaOdjece";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.OdjecaSoloPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz odjece</title>
+    <script src="~/js/Administrator/ProizvodiFilteri.js"></script>
+</head>
+<body>
+
+    <div class="tabela">
+        <h3>Lista dobavljača za odjeću</h3>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Slika</th>
+                    <th>Naziv</th>
+                    <th>Cijena</th>
+                    <th>Veličine van stanja</th>
+                    <th>Akcija</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="/images/@Model.ImageUrl" width="50px" height="50px" />
+                    </td>
+                    <td>
+                        @Model.Naziv
+                    </td>
+                    <td>
+                        @Model.Cijena
+                    </td>
+
+                    <td>
+                        @foreach (var s in @Model.velicine)
+                        {
+                        <span>@s,</span>
+                       }
+                    </td>
+
+                    <td>
+                        <a href="/AdministratorNabavka/PrikazDobavljacaOdjece?OdjecaID=@Model.OdjecaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>prikaži dobavljače odjeće</a>
+
+                        <a href="/AdministratorProizvod/PrikazVelicine?OdjecaID=@Model.OdjecaID" class="btn btn-success btn-sm "><span class="glyphicon glyphicon-list-alt"></span>Dodavanje količine na stanje</a>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <a href="/AdministratorNabavka/ShowClothesOutOfStock" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-search"></span>Vrati na prikaz odjeće van stanja</a>
+        <div id="nekiID"></div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function (parameters) {
+        $.get("/AdministratorAjax/GetDobavljaceOdjece",
+            function (rezultat, status) {
+                $("#nekiID").html(rezultat);
+
+            });
+    });
+</script>

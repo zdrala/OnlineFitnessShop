@@ -8,13 +8,26 @@ namespace OnlineFitnessShop.ViewModels.Kupac
     public class DodatakPrikazVM
     {
         
-            public int DodatakID { get; set; }
-            public int ProizvodID { get; set; }
-            public string Naziv { get; set; }
-            public float Cijena { get; set; }
-            public string TipDodatka { get; set; }
-            public string ImageUrl { get; set; }
-            public int Kolicina { get; set; }
+        public int DodatakID { get; set; }
+        public int ProizvodID { get; set; }
+        public string Naziv { get; set; }
+        public float Cijena { get; set; }
+        public string TipDodatka { get; set; }
+        public string ImageUrl { get; set; }
+        public int Kolicina { get; set; }
+
+        public List<Komentari> komentari { get; set; }
+        public class Komentari
+        {
+            public string ImeKorisnik { get; set; }
+            public string slikaUrl { get; set; }
+            public string komentarTekst { get; set; }
+            public string DatumKomentarisanja { get; set; }
+        }
+
+        public string Komentar { get; set; }
+        public int KorisnikID { get; set; }
+        public int BrojKomentara { get; set; }
 
     }
 }

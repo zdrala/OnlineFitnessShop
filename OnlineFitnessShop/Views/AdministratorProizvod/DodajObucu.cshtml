@@ -1,0 +1,176 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "DodajObucu";
+
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodajObucuVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodaj patike</title>
+
+</head>
+<body>
+
+    <div class="dodajProizvodForm">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Dodavanje nove obuće
+            </div>
+        </div>
+        <form asp-action="SpremiObucu" enctype="multipart/form-data" id="dodavanjeObuce">
+            <div class="form-group">
+                <label>Naziv proizvoda</label>
+                <input asp-for="Naziv" class="form-control" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Cijena</label>
+                <input asp-for="Cijena" class="form-control" />
+                <span asp-validation-for="Cijena" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label>Dobavljač:</label>
+                <select asp-for="DobavljacID" class="form-control" asp-items="Model.dobavljaci">
+                    <span asp-validation-for="DobavljacID" class="text-danger"></span>
+                    <option hidden readonly value="">Odaberi dobavljača za ovaj proizvod</option>
+
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Spol</label>
+                <select asp-for="Spol" class="form-control" asp-items="Model.spol">
+                    <span asp-validation-for="Spol" class="text-danger"></span>
+                    <option hidden readonly value="">Odaberi za koji spol je ovaj proizvod</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Namjena</label>
+                <input asp-for="Namjena" class="form-control" />
+                <span asp-validation-for="Namjena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Brend</label>
+                <input asp-for="Brend" class="form-control" />
+                <span asp-validation-for="Brend" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Opis</label>
+                <input asp-for="Opis" class="form-control" />
+                <span asp-validation-for="Opis" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Slika proizvoda</label>
+                <input asp-for="@Model.slika" class="form-control" />
+            </div>
+
+
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>Dodaj</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+    $.validator.addMethod(
+        "regex",
+        function(value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#dodavanjeObuce").validate({
+        rules: {
+            Naziv: {
+                required: true,
+                minlength: 3,
+                regex: /^^[A-Z]+[a-zA-Z. ]{1,}/
+            },
+           Cijena: {
+                required: true,
+               min: 1,
+                number:true
+
+            },
+            DobavljacID: {
+                required: true
+
+            },
+            Spol: {
+                required: true
+
+            },
+           Namjena: {
+                required: true
+
+
+            },
+            Brend: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z. ]{1,}/
+            },
+            Opis: {
+                required:true
+            }
+
+
+
+        },
+        messages: {
+            Naziv: {
+                required: "Naziv obuće je obavezno polje!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            Cijena: {
+                required: "Cijena obuće je obavezna!",
+                min: "unesi cijenu vecu od 0!",
+                number:"Dozvoljen unos brojeva samo!"
+
+            },
+            DobavljacID: {
+                required: "Odaberi dobavljača za obuću!"
+            },
+            Spol: {
+                required: "Odaberi spol za ovu obuću!"
+
+            },
+            Namjena: {
+                required: "Unesi namjenu"
+
+            },
+            Brend: {
+                required: "Unesi brend!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            Opis: {
+                required: "Unesi opis vezan za ovaj proizvod"
+            }
+
+
+
+        }
+
+
+    });
+</script>

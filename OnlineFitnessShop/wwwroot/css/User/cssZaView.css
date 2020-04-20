@@ -1,0 +1,347 @@
+.container-l {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#slika-input{
+    width:200px;
+    margin-bottom:40px;
+    margin-right:0;
+    padding:0;
+    height:30px;
+
+}
+
+.container-l2 {
+    width: 700px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.container-l3 {
+    width: 700px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.l {
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 55px 0px 55px;
+}
+
+.l4 {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.l2{
+    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.l3 {
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table{
+    text-align:center;
+}
+
+input {
+    float:right;
+    margin-right: 25px;
+    width: 150px;
+    margin-bottom:20px;
+}
+
+.inputB {
+    float:none;
+    width: 200px;
+    margin-bottom:2px;
+    margin-right:0px;
+}
+
+.labelB {
+    margin-top: 7px;
+    margin-bottom: 0px;
+    margin-left:0px;
+    width:200px;
+    font-size:13px;
+}
+
+select {
+    float: right;
+    margin-right: 25px;
+    width: 150px;
+    height:26px;
+}
+.selectB {
+    float: none;
+    margin-right: 0px;
+    width: 200px;
+    height: 26px;
+}
+label {
+    margin-left: 25px;
+    margin-top: 2px;
+    margin-bottom: 18px;
+}
+
+.error {
+    color: red;
+    border: 1px solid red;
+    height: 26px;
+}
+
+#Text-error {
+    position: absolute;
+    display: flex;
+    margin-left: 0px;
+    width: 200px;
+    color: red;
+    font-size: 10px;
+    margin-top: 1px;
+    border: none;
+}
+
+#Ime-error, #Prezime-error, #Email-error, #Username-error, #Password-error, #DatumRodjenja-error, #BrojTelefona-error, #Adresa-error, #GradID-error, #StariPassword-error, #password-error, #TempText2-error,
+#NazivKartice-error, #BrojKartice-error, #Code-error, #MjesecIsteka-error, #GodinaIsteka-error {
+    position: absolute;
+    display: flex;
+    margin-left: 0px;
+    width: 200px;
+    color: red;
+    font-size: 10px;
+    margin-top: 1px;
+    border: none;
+}
+
+.button-cont{
+    width:200px;
+    text-align:center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.alert {
+    width: 200px;
+    padding: 5px;
+    font-size: 13px;
+    margin-bottom: 2px;
+    border: 1px solid black !important;
+    border-radius:unset;
+    margin-top:7px;
+    color:black;
+}
+
+.alert-danger{
+    background-color:orangered;
+}
+
+.empty {
+    background-color: rgb(242,222,222);
+    border: 1px solid #ffcccc;
+    color: #cc0044;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    margin-bottom:20px;
+}
+
+th{
+    text-align:center;
+}
+
+.pregled{
+    text-transform:uppercase;
+    font-weight:bold;
+    color:dimgrey;
+}
+.prihvaceno {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #35d119;
+}
+.odbijeno {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: red;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cont {
+    top: 300px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.popup {
+    display: none;
+    width: 600px;
+    height: 165px;
+    background-color: white;
+    z-index: 1000;
+    margin: 0 auto;
+    position: fixed;
+    border: 1px solid black;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:40%;
+}
+
+.txtP{
+    font-size:16px;
+    color:black;
+    display:block;
+    text-align:center;
+}
+
+.txt-div{
+    height:125px;
+    padding-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.options{
+    width:100%;
+    bottom:0;
+    padding:0px 24px 10px 24px;
+    text-align:center;
+}
+
+.a-c {
+    text-decoration: none;
+    color: white;
+    background-color:red;
+    text-align: center;
+    padding: 10px 7px;
+}
+
+.a-c:hover{
+    text-decoration:none;
+    border:1px solid black;
+    cursor:pointer;
+}
+
+.cover{
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    background-color:rgba(0,0,0,0.7);
+    z-index:99;
+    top:0;
+    left:0;
+}
+
+.page-li {
+    display: inline;
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+    background-color: white;
+    color:black;
+}
+
+.page-li:hover{
+    cursor:pointer;
+    text-decoration:none;
+    color:black;
+}
+
+.stranice{
+    margin-top:10px;
+    margin-bottom:10px;
+    height:40px;
+}
+
+.active {
+    background-color: rgb(52,58,64);
+    color:white;
+}
+.active:hover{
+    color:white;
+}
+
+.page-txt{
+    color:black;
+    font-size:14px;
+    margin-top:0;
+}
+
+.profil-slika {
+    width: 150px;
+    height: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    margin-bottom:40px;
+    border-radius:50%;
+}
+
+@media only screen and (max-width: 991px) {
+    .l {
+        padding: 10px 5px 0px 5px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+
+    .l {
+        padding: 10px 5px 0px 5px;
+    }
+
+    .container-l {
+        padding: 3px;
+    }
+}   

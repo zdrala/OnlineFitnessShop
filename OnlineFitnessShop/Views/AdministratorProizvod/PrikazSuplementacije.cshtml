@@ -1,0 +1,97 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    int brojac = 0;
+    //var dobavljaci = (List<Dobavljac>)ViewData["Dobavljaci"];
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.SuplementacijaPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz suplementacije</title>
+    <script src="~/js/Administrator/ProizvodiFilteri.js"></script>
+</head>
+<body>
+
+    <div class="container" id="cont1">
+        <p class="pClass">
+            Filter za kategoriju:
+        </p>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterProtein()">Protein
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd2" type="radio" name="optradio" onclick="filterKreatin()">Kreatin
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterPreWorkout()">Pre-Workout
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterSvi()" checked>Svi proizvodi
+        </label>
+
+    </div>
+    <div class="proizvodi">
+        <div class="tabela" id="myTable">
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Slika</th>
+                        <th>Naziv</th>
+                        <th>Cijena</th>
+                        <th>Kategorija</th>
+                        <th>Brend</th>
+                        <th>Tezina(kg)</th>
+                        <th>Kolicina</th>
+                        <th>Akcija</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody id="b-id">
+                    @foreach (var x in @Model.podaciSuplement)
+                    {
+                        <tr id="red-@brojac">
+
+                            <td>
+                                <img src="/images/@x.ImageUrl" width="50px" height="50px" />
+                            </td>
+                            <td>
+                                @x.Naziv
+                            </td>
+                            <td>
+                                @x.Cijena
+                            <td class="kategorija">
+                                @x.kategorijaSuplementacije
+                            </td>
+                            <td>
+                                @x.Brend
+                            </td>
+                            <td>
+                                @x.Tezina
+                            </td>
+                            <td>
+                                @x.kolicina
+                            </td>
+                            @*<td><a href="/Administrator/Uredi?dobavljacid=@x.DobavljacID"><input type="button" class="btn btn-warning" value="Uredi" /></a></td>*@
+                        <td>
+                            <a href="/AdministratorProizvod/UrediSuplement?id=@x.SuplementacijaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                            <a href="/AdministratorProizvod/ObrisiSuplement?id=@x.SuplementacijaID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                            <a href="/AdministratorProizvod/PrikazKomentaraZaProizvod?id=@x.ProizvodID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>Prikaži komentare</a>
+                        </td>
+                        </tr>
+                        brojac = brojac + 1;
+                    }
+                </tbody>
+            </table>
+ 
+            <a href="/AdministratorProizvod/DodajSuplementaciju" class="btn btn-success">Dodaj novu suplementaciju</a>
+        </div>
+    </div>
+
+</body>
+</html>

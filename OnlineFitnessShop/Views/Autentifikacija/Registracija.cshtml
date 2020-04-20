@@ -1,18 +1,19 @@
 ﻿@using OnlineFitnessShop.ViewModels;
 @using ClassLibrarySeminarski.Model;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
 @model OnlineFitnessShop.ViewModels.Autentifikacija.ProfilVM;
 @{
-    var gradovi = (List<SelectListItem>)ViewData["Gradovi"];
     string error_poruka = (string)TempData["error_poruka"];
     Layout = "blank";
 }
 <head>
-         <link rel="stylesheet" type="text/css" href="~/css/Autentifikacija/main2.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Autentifikacija/main2.css">
 </head>
 <body>
     <div class="container-login100">
         <div class="regform">
-            <form asp-action="Snimi" id="registracija">
+            <form asp-action="Snimi" id="registracija" enctype="multipart/form-data">
                 <span class="reg-form-title">
                     Registracija računa
                 </span>
@@ -43,6 +44,11 @@
                             <input name="passw" id="passw" type="password" autocomplete="off" class="form-control" /><br />
                         </div>
 
+                        <div class="form-group">
+                            <label>Slika</label>
+                            <input asp-for="@Model.Slika" class="form-control" /><br />
+                        </div>
+
                     </div>
                     <div class="form-half">
 
@@ -53,12 +59,21 @@
 
                         <div class="form-group">
                             <label>Datum rođenja</label>
-                            <input asp-for="DatumRodjenja" type="date" lass="form-control" value="" style="height:34px;"/><br />
+                            <input asp-for="DatumRodjenja" type="date" class="form-control" value="" style="height:34px;" /><br />
                         </div>
 
                         <div class="form-group">
-                            <label>Broj telefona</label>
-                            <input asp-for="BrojTelefona" autocomplete="off" class="form-control" /><br />
+                            <label>Spol</label>
+                            <select asp-for="Spol" class="form-control" asp-items="Model.spolovi">
+                                <option hidden readonly value="">Odaberi spol</option>
+                            </select><br />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Grad</label>
+                            <select asp-for="GradID" class="form-control" asp-items="Model.gradovi">
+                                <option hidden readonly value="">Odaberi grad</option>
+                            </select><br />
                         </div>
 
                         <div class="form-group">
@@ -67,15 +82,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Grad</label>
-                            <select asp-for="GradID" class="form-control" asp-items="gradovi">
-                                <option hidden readonly value="">Odaberi grad</option>
-                            </select>
+                            <label>Broj telefona</label>
+                            <input asp-for="BrojTelefona" autocomplete="off" class="form-control" /><br />
                         </div>
-
-
                     </div>
                 </div>
+
+                @if (error_poruka != null)
+                {
+                    <br />
+                    <div class="alert alert-danger">
+                        @error_poruka
+                    </div>
+                }
+
 
                 <button type="submit" class="reg-form-btn">
                     Registracija
@@ -84,21 +104,14 @@
 
             </form>
             <br />
-            @if (error_poruka != null)
-            {
-                <br />
-                <div class="alert alert-danger">
-                    @error_poruka
-                </div>
-            }
-
+           
         </div>
-</div>
+    </div>
 </body>
 <script>
     $.validator.addMethod(
         "regex",
-        function(value, element, regexp) {
+        function (value, element, regexp) {
             var check = false;
             return this.optional(element) || regexp.test(value);
         },
@@ -122,7 +135,7 @@
             },
             Email: {
                 required: true,
-                regex: /([a-z0-9._-]{1,61})@@([a-z]{2,}).com/
+                regex: /([a-z0-9._-]{1,61})@@([a-z]{2,}).(com|ba)/
 
             },
             BrojTelefona: {
@@ -134,18 +147,21 @@
                 required: true
 
             },
+            Spol: {
+                required: true
+            },
             Adresa: {
                 required: true,
                 minlength: 5
             },
             Username: {
                 required: true,
-                regex: /^[a-zA-Z]{2,}/
+                regex: /^[a-zA-Z]{2,40}/
 
             },
             Password: {
                 required: true,
-                regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+                regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,40}$/
 
             },
             passw: {
@@ -171,13 +187,16 @@
             },
             Email: {
                 required: "Obavezno polje!",
-                regex: "format: text@text.com"
+                regex: "format: text@text.com(ba)"
             },
             BrojTelefona: {
                 required: "Obavezno polje!",
                 regex: "format: +387 06X-XXX-XXX(X)"
             },
             GradID: {
+                required: "Obavezno polje!"
+            },
+            Spol: {
                 required: "Obavezno polje!"
             },
             Adresa: {
@@ -196,10 +215,10 @@
             passw: {
                 required: "Obavezno polje!",
                 regex: "Minimalno 6 karaktera , 1 veliko slovo i 1 broj !",
-                equalTo:"Passwordi se ne podudaraju!"
+                equalTo: "Passwordi se ne podudaraju!"
             }
 
-            
+
 
 
         }

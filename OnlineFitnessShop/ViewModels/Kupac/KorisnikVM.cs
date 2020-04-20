@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,9 +27,11 @@ namespace OnlineFitnessShop.ViewModels.Kupac
         public DateTime DatumRodjenja { get; set; }
 
         [Required]
+        [RegularExpression("([a-z0-9._-]{1,60})@([a-z]{2,}).(com|ba)")]
         public string Email {get;set;}
 
         [Required]
+        [RegularExpression(@"^\+387 06[0-9]{1}-[0-9]{3}-[0-9]{3}")]
         public string BrojTelefona { get; set; }
 
         [Required]
@@ -35,6 +39,10 @@ namespace OnlineFitnessShop.ViewModels.Kupac
 
         [Required]
         public string Adresa { get; set; }
+
+        public IFormFile Slika { get; set; }
+
+        public List<SelectListItem> gradovi { get; set; }
 
     }
 }

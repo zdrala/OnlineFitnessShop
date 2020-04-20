@@ -23,5 +23,11 @@ namespace ClassLibrarySeminarski.Model
         [ForeignKey("KorisnikNalogID")]
         public KorisnikNalog KorisnickiNalog { get; set; }
 
+        public string Spol { get; set; }
+        public bool Obrisan { get; set; }
+
+        public string imageUrl { get; set; }
+
+        public bool Aktiviran { get; set; }
     }
 }

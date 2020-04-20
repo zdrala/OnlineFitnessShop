@@ -12,7 +12,7 @@ body, html {
 
 .container-login100 {
     width: 100%;
-    min-height: 50vh;
+    min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -29,6 +29,7 @@ body, html {
 
 .form-group{
     margin-bottom:0px;
+    width:230px;
 }
 
 .regform {
@@ -195,9 +196,18 @@ select {
     float: right;
 }
 
+#Spol-error {
+    position: absolute;
+    margin-top: 2px;
+    font-size: 12px;
+    width: 200px;
+    text-align: left;
+    float: right;
+}
 
 
-@media only screen and (max-width: 550px) {
+
+@media only screen and (max-width: 610px) {
     
     .form-half{
         margin-left:auto;

@@ -1,0 +1,94 @@
+﻿@using OnlineFitnessShop.ViewModels.Kupac;
+@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@model OnlineFitnessShop.ViewModels.Kupac.PodaciVM;
+@{
+    string poruka = (string)TempData["poruka"];
+    string poruka2 = (string)TempData["poruka2"];
+    PodaciVM kor = (PodaciVM)TempData["Korisnik"];
+
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/User/cssZaView.css">
+</head>
+<body>
+    <div class="container-l">
+        <div class="l2">
+            <form asp-action="SnimiUsername" id="updateUsername">
+
+                @if (poruka != null)
+                {
+
+                    <div class="alert alert-danger">
+                        @poruka
+                    </div>
+                }
+
+                @if (poruka2 != null)
+                {
+
+                    <div class="alert alert-success">
+                        @poruka2
+                    </div>
+                }
+
+                <input asp-for="ID" value="@kor.ID" hidden /><br />
+
+                <div class="form-group">
+                    <label class="labelB">Trenutni username</label>
+                    <input id="stariUsername" name="stariUsername" class="inputB" value="@kor.Text" readonly /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Novi username</label>
+                    <input asp-for="Text" type="text" class="inputB" value="@kor.Text2"/><br />
+                </div>
+
+
+                <div class="button-cont">
+                    <button class="btn btn-info" type="submit">UPDATE</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#updateUsername").validate({
+        rules: {
+             Text: {
+                required: true,
+                regex: /^[a-zA-Z]{2,}/
+
+            },
+            stariUsername: {
+                required: true,
+                regex: /^[a-zA-Z]{2,}/
+
+            }
+        },
+        messages: {
+            Text: {
+                required: "Obavezno polje!",
+                regex: "Username mora sadrzavati slova!"
+            },
+            stariUsername: {
+                required: "Obavezno polje!",
+                regex: "Username mora sadrzavati slova!"
+            }
+
+        }
+  
+    });
+</script>

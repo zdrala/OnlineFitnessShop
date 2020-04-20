@@ -15,11 +15,14 @@ namespace ClassLibrarySeminarski.Model
         [ForeignKey("NarudzbaID")]
         public int NarudzbaID { get; set; }
 
-        public Korisnik Korisnik { get; set; }        //admin koji je potvrdio narudzbu
+        public Korisnik Korisnik { get; set; }       
         [ForeignKey("KorisnikID")]
         public int KorisnikID { get; set; }
         public DateTime DatumTransakcije { get; set; }
         public float NaplaceniIznos { get; set; }
         public float NaplaceniIznosSaPDV { get; set; }
+
+       public bool Izbrisano { get; set; }
+
     }
 }

@@ -22,5 +22,7 @@ namespace ClassLibrarySeminarski.Model
         public DateTime datumDodavanja { get; set; }
 
       public string ImageUrl { get; set; }
+
+        public bool Obrisan { get; set; }
     }
 }

@@ -44,6 +44,9 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<string>("Naziv")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
+
                     b.HasKey("DobavljacID");
 
                     b.HasIndex("DobavljacKategorijaID");
@@ -80,6 +83,9 @@ namespace ClassLibrarySeminarski.Migrations
 
                     b.Property<string>("Namjena")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ProizvodID")
                         .HasColumnType("int");
@@ -142,14 +148,17 @@ namespace ClassLibrarySeminarski.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("KorisnikID")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DatumKomentarisanja")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("LikeCounter")
+                    b.Property<int>("KorisnikID")
                         .HasColumnType("int");
 
                     b.Property<int>("ProizvodID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Tekst")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("KomentarID");
 
@@ -162,13 +171,16 @@ namespace ClassLibrarySeminarski.Migrations
 
             modelBuilder.Entity("ClassLibrarySeminarski.Model.Korisnik", b =>
                 {
-                    b.Property<int>("KupacId")
+                    b.Property<int>("KorisnikID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Adresa")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Aktiviran")
+                        .HasColumnType("bit");
 
                     b.Property<string>("BrojTelefona")
                         .HasColumnType("nvarchar(max)");
@@ -188,10 +200,19 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<int?>("KorisnikNalogID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("KupacId");
+                    b.Property<string>("Spol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("imageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("KorisnikID");
 
                     b.HasIndex("GradID");
 
@@ -213,11 +234,17 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<string>("BrojKartice")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DatumIsteka")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Code")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GodinaIsteka")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("KorisnikID")
                         .HasColumnType("int");
+
+                    b.Property<string>("MjesecIsteka")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NazivKartice")
                         .HasColumnType("nvarchar(max)");
@@ -241,6 +268,9 @@ namespace ClassLibrarySeminarski.Migrations
 
                     b.Property<string>("Lozinka")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
 
                     b.Property<int>("VrstaKorisnikaID")
                         .HasColumnType("int");
@@ -268,14 +298,20 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<int>("GradID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Izbrisano")
+                        .HasColumnType("bit");
+
                     b.Property<float>("IznosBezPDV")
                         .HasColumnType("real");
 
                     b.Property<float>("IznosSaPDV")
                         .HasColumnType("real");
 
-                    b.Property<int>("KarticaID")
+                    b.Property<int?>("KarticaID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Komentar")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("KorisnikID")
                         .HasColumnType("int");
@@ -318,6 +354,12 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<int>("ProizvodID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Velicina")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VrstaProizvoda")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("NarudzbaStavkeID");
 
                     b.HasIndex("NarudzbaID");
@@ -339,6 +381,9 @@ namespace ClassLibrarySeminarski.Migrations
 
                     b.Property<string>("Namjena")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Opis")
                         .HasColumnType("nvarchar(max)");
@@ -392,6 +437,9 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<string>("Materijal")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Opis")
                         .HasColumnType("nvarchar(max)");
 
@@ -444,8 +492,14 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<int>("DobavljacID")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Naziv")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("datumDodavanja")
                         .HasColumnType("datetime2");
@@ -485,6 +539,9 @@ namespace ClassLibrarySeminarski.Migrations
                     b.Property<int>("KategorijaID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Obrisan")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ProizvodID")
                         .HasColumnType("int");
 
@@ -516,8 +573,8 @@ namespace ClassLibrarySeminarski.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("SuplementacijaKategorijaNaziv")
-                        .HasColumnType("int");
+                    b.Property<string>("SuplementacijaKategorijaNaziv")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SuplementacijaKategorijaID");
 
@@ -533,6 +590,9 @@ namespace ClassLibrarySeminarski.Migrations
 
                     b.Property<DateTime>("DatumTransakcije")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Izbrisano")
+                        .HasColumnType("bit");
 
                     b.Property<int>("KorisnikID")
                         .HasColumnType("int");
@@ -659,9 +719,7 @@ namespace ClassLibrarySeminarski.Migrations
 
                     b.HasOne("ClassLibrarySeminarski.Model.KorisnikKartice", "Kartica")
                         .WithMany()
-                        .HasForeignKey("KarticaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("KarticaID");
 
                     b.HasOne("ClassLibrarySeminarski.Model.Korisnik", "Korisnik")
                         .WithMany()

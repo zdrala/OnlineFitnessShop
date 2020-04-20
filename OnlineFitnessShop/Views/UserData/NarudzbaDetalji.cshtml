@@ -1,0 +1,53 @@
+﻿@using OnlineFitnessShop.ViewModels.Kupac;
+@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@model OnlineFitnessShop.ViewModels.Kupac.NarudzbaStavkeVM;
+@{
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/User/cssZaView.css">
+</head>
+<body>
+    <div class="container-l2">
+        <div class="l4">
+                <div class="tabela">
+                    <table id="tabelaID" class="table table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Slika</th>
+                                <th>Naziv</th>
+                                <th>Veličina</th>
+                                <th>Cijena</th>
+                                <th>Količina</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.stavke)
+                            {
+                            <tr>
+                                <td>
+                                    <img src="/images/@x.imageUrl" width="70px" height="70px" />
+                                </td>
+                                <td>
+                                    @x.Naziv
+                                </td>
+                                <td>
+                                    @x.Velicina
+                                </td>
+                                <td>
+                                    @x.Cijena
+                                </td>
+                                <td>
+                                    @x.TrazenaKolicina
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            <a href="/UserData/Narudzbe?page=1" class="btn btn-danger">Nazad</a>
+        </div>
+     </div>
+</body>

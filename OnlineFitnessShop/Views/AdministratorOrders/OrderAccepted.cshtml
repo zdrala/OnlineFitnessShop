@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "OrderAccepted";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Completed</title>
+    <style>
+
+        h2 {
+            color: black;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: black;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .img-No {
+            height: 150px;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-bottom: 30px;
+            margin-top: 100px;
+        }
+        .a{
+           
+           width:50%;
+           margin-left:240px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+        <img class="img-No" src="~/images/Succ.png" alt="">
+        <h2>Uspješno ste prihvatili narudžbu !</h2>
+        <h3>Transakcija je uspješno obavljena!</h3>
+        <h3>Potvrda o uspješnosti transakcije je poslana kupcu na e-mail!</h3>
+
+
+        <a  href="/AdministratorOrders/PrikazNarudzbiNaCekanju" class="btn btn-info btn-sm a"><span class="glyphicon glyphicon-arrow-left"></span>Vrati na prikaz narudžbi</a>
+    </div>
+</body>
+</html>
+

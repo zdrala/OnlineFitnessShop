@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {}
+    "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {}
   },
   "projects": {
-    "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
+    "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
+        "projectUniqueName": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
         "projectName": "ClassLibrarySeminarski",
-        "projectPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
+        "projectPath": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\obj\\",
+        "outputPath": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

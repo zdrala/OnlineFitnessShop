@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "PrikazDobavljacaDodataka";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodatakSoloPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dodataka</title>
+    <script src="~/js/Administrator/ProizvodiFilteri.js"></script>
+</head>
+<body>
+
+
+    <div class="tabela">
+        <h3>Lista dobavljača za dodatke za treniranje</h3>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Slika</th>
+                    <th>Naziv</th>
+                    <th>Cijena</th>
+                    <th>Tip dodatka</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody id="b-id">
+
+                <tr>
+
+                    <td>
+                        <img src="/images/@Model.ImageUrl" width="50px" height="50px" />
+                    </td>
+                    <td>
+                        @Model.Naziv
+                    </td>
+                    <td>
+                        @Model.Cijena
+                    </td>
+                    <td class="tipDodatka">
+                        @Model.TipDodatka
+                    </td>
+
+                    <td>
+                        <a href="/AdministratorNabavka/PrikazDobavljacaDodataka?id=@Model.DodatakID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>Prikaži dobavljače dodataka</a>
+                        <a href="/AdministratorNabavka/UvecajKolicinuDodatka?id=@Model.DodatakID" class="btn btn-success btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uvećaj količinu na stanju</a>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <a href="/AdministratorNabavka/PrikazDodatakaOutofStock" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-search"></span>Vrati na prikaz dodataka van stanja</a>
+        <div id="nekiID"></div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function (parameters) {
+        $.get("/AdministratorAjax/GetDobavljaceDodataka",
+            function (rezultat, status) {
+                $("#nekiID").html(rezultat);
+
+            });
+    });
+</script>

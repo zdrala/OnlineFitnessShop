@@ -22,6 +22,7 @@ namespace OnlineFitnessShop.ViewModels.AdministratorVMs
             public string Brend { get; set; }
 
             public string imageUrl { get; set; }
+            public List<string> velicine { get; set; }
         }
 
     }

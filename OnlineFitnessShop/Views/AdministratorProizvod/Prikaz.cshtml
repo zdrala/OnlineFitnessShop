@@ -1,0 +1,56 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+
+    var dobavljaci = (List<Dobavljac>)ViewData["Dobavljaci"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dobavljača</title>
+</head>
+<body>
+    <table border="1" class="table-hover">
+        <thead>
+            <tr>
+                <td>Naziv</td>
+                <td>Broj telefona</td>
+                <td>e-mail adresa</td>
+                <td>Grad</td>
+                <td>Adresa</td>
+                <td>Kategorija</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in dobavljaci)
+            {
+            <tr>
+                <td>
+                    @x.Naziv
+                </td>
+                <td>
+                    @x.BrojTelefona
+                </td>
+                <td>
+                    @x.Email
+                <td>
+                    @x.Grad.Naziv
+                </td>
+                <td>
+                    @x.Adresa
+                </td>
+                <td>
+                    @x.DobavljacKategorija.nazivKategorije
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    Povratak <a href="/Administrator"><input type="button" value="Nazad" /></a>
+</body>
+</html>

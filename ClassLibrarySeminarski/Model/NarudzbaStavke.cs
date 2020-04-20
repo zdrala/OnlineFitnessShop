@@ -21,5 +21,9 @@ namespace ClassLibrarySeminarski.Model
 
         public int Kolicina { get; set; }
         public float CijenaStavke { get; set; }
+
+        public string Velicina { get; set; }
+
+        public string VrstaProizvoda { get; set; }
     }
 }

@@ -23,5 +23,7 @@ namespace ClassLibrarySeminarski.Model
         public DateTime RokTrajanja { get; set; }
 
         public int kolicina { get; set; }
+
+        public bool Obrisan { get; set; }
     }
 }

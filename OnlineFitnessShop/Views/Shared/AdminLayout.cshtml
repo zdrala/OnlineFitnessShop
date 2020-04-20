@@ -39,73 +39,135 @@
         <div class="menu-list">
             <ul id="menu-content" class="menu-content collapse out">
 
-                <li>
-                    <a href="/Administrator/Index">
-                        <div>
+                <li class="navmenuitemHome">
+                    <a href="/administratorproizvod/index">
+                        <div class="navMenuItemText">
                             <i class="fa fa-home fa-lg"></i> Home
                         </div>
                     </a>
                 </li>
 
-                <li data-toggle="collapse" data-target="#vendors" class="collapsed">
-                    <a href="#"><i @*class="fa fa-user fa-lg"*@ class="fas fa-shuttle-van"></i> Dobavljači</a>
+                <li class="navMenuItem" data-toggle="collapse" data-target="#vendors" class="collapsed">
+                    <div class="navMenuItemText">
+                        <a href="#"><i @*class="fa fa-user fa-lg"*@ class="fas fa-shuttle-van"></i> Dobavljači</a>
+                    </div>
                 </li>
                 <ul class="sub-menu collapse" id="vendors">
                     <li>
-                        <a href="/Administrator/PrikazDobavljaca">
+                        <a href="/AdministratorDobavljac/PrikazDobavljaca">
                             <div>Prikaži dobavljače</div>
                         </a>
                     </li>
                     <li>
-                        <a href="/Administrator/DodajDobavljaca">
+                        <a href="/AdministratorDobavljac/DodajDobavljaca">
                             <div>Novi dobavljač</div>
                         </a>
                     </li>
                 </ul>
 
-                <li data-toggle="collapse" data-target="#items" class="collapsed">
-                    <a href="#"><i class="fa fa-calendar-alt fa-lg"></i>Proizvodi</a>
+                <li class="navMenuItem" data-toggle="collapse" data-target="#items" class="collapsed">
+                    <div class="navMenuItemText">
+                        <a href="#"><i class="fa fa-calendar-alt fa-lg"></i>Proizvodi</a>
+                    </div>
                 </li>
+
                 <ul class="sub-menu collapse" id="items">
                     <li>
-                        <a href="/Administrator/PrikazSuplementacije">
+                        <a href="/AdministratorProizvod/PrikazSuplementacije">
                             <div>Prikaži suplementaciju</div>
                         </a>
                     </li>
                     <li>
-                        <a href="/Administrator/PrikazOdjece">
+                        <a href="/AdministratorProizvod/PrikazOdjece">
                             <div>Prikaži odjeću</div>
                         </a>
                     </li>
                     <li>
-                        <a href="/Administrator/PrikazObuce">
+                        <a href="/AdministratorProizvod/PrikazObuce">
                             <div>Prikaži obuću</div>
                         </a>
                     </li>
+                    <li>
+                        <a href="/AdministratorProizvod/PrikazDodataka">
+                            <div>Prikaži dodatke za trening</div>
+                        </a>
+                    </li>
                 </ul>
-                <li data-toggle="collapse" data-target="#users" class="collapsed">
-                    <a href="#"><i class="fa fa-user fa-lg"></i>Korisnici</a>
+                <li class="navMenuItem" data-toggle="collapse" data-target="#users" class="collapsed">
+                    <div class="navMenuItemText">
+                        <a href="#"><i class="fa fa-user fa-lg"></i>Korisnici</a>
+                    </div>
                 </li>
                 <ul class="sub-menu collapse" id="users">
                     <li>
-                        <a href="/Administrator/PrikazAdmina">
+                        <a href="/AdministratorUsers/PrikazAdmina">
                             <div>Prikaži registrovane administratore</div>
                         </a>
                     </li>
                     <li>
-                        <a href="/Administrator/PrikazKupaca">
-                            <div>Prikaži registrovane kupce</div>
+                        <a href="/AdministratorUsers/PrikazKupaca">
+                            <div>Prikaži registrovane korisnike</div>
+                        </a>
+                    </li>
+                </ul>
+                <li class="navMenuItem" data-toggle="collapse" data-target="#orders" class="collapsed">
+                    <div class="navMenuItemText">
+                        <a href="#"><i class="fa fa-shopping-cart fa-lg"></i>Narudžbe</a>
+                    </div>
+                </li>
+                <ul class="sub-menu collapse" id="orders">
+                    <li>
+                        <a href="/AdministratorOrders/PrikazOdobrenihNarudzbi">
+                            <div>Prikaži odobrene narudžbe</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/AdministratorOrders/PrikazOdbijenihNarudzbi">
+                            <div>Prikaži odbijene narudžbe</div>
+                        </a>
+                    </li>
+                </ul>
+                <li class="navMenuItem" data-toggle="collapse" data-target="#not" class="collapsed">
+                    <div class="navMenuItemText">
+                        <a href="#"><i class="fa fa-cube fa-lg"></i>Nabavka</a>
+                    </div>
+                </li>
+                <ul class="sub-menu collapse" id="not">
+                    <li class="itemNots">
+                        <a href="/AdministratorNabavka/ShowSuplementsOutOfStock">
+                            <div>Prikaži suplemente kojih nema na stanju</div>
+                        </a>
+                    </li>
+                    <li class="itemNots">
+                        <a href="/AdministratorNabavka/ShowClothesOutOfStock">
+                            <div>Prikaži odjeću koje nema na stanju</div>
+                        </a>
+                    </li>
+                    <li class="itemNots">
+                        <a href="/AdministratorNabavka/ShowFootWearsOutOfStock">
+                            <div>Prikaži obuću koje nema na stanju</div>
+                        </a>
+                    </li>
+                    <li class="itemNots">
+                        <a href="/AdministratorNabavka/PrikazDodatakaOutofStock">
+                            <div>Prikaži dodatke za treniranje kojih nema na stanju</div>
                         </a>
                     </li>
                 </ul>
             </ul>
-        </div>
+    </div>
     </div>
     <div @*class="container"*@ id="main">
         <div id="header">
 
-            <span style="color: white; font-weight: bolder; font-size:25px;">ADMINISTRATORSKI PANEL</span>
-
+            <a href="/administratorproizvod/index" style="height:50px; font-size:25px; color:white;">
+                <div class="navMenuItemText">
+                    <i class="fa fa-home fa-lg"></i> Home
+                </div>
+            </a>
+            <div class="textApanel">
+                <span style="color: white; font-weight: bolder; font-size:25px; margin-left:200px; margin-top:-100px;">ADMINISTRATORSKI PANEL</span>
+            </div>
             @{
                 if (kor != null)
                 {

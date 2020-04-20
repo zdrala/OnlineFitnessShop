@@ -19,5 +19,7 @@ namespace ClassLibrarySeminarski.Model
         public string Namjena { get; set; }
         public string Opis { get; set; }
 
+        public bool Obrisan { get; set; }
+
     }
 }

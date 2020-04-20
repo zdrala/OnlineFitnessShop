@@ -1,0 +1,124 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.KupacPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz kupaca</title>
+</head>
+<body>
+    <div class="IzborRedova">
+        <select name="state" id="maxRows" class="form-control" style="width:300px">
+            <option value="5000">Prikaži sve korisnike na jednoj stranici</option>
+            <option value="5">Prikaži 5 korisnika na jednoj stranici</option>
+            <option value="10">Prikaži 10 korisnika na jednoj stranici</option>
+            <option value="15">Prikaži 15 korisnika na jednoj stranici</option>
+        </select>
+
+    </div>
+    <div class="tabela">
+        <h3>Registrovani korisnici</h3>
+        <table class="table table-hover table-bordered" id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>E-mail adresa</th>
+                    <th>Broj telefona</th>
+                    <th>Akcija</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.podaciKupci)
+                {
+                    <tr>
+                        <td>
+                            @x.Ime
+                        </td>
+                        <td>
+                            @x.Prezime
+                        </td>
+                        <td>
+                            @x.EmailAdresa
+                        <td>
+                            @x.BrojTelefona
+                        </td>
+                        <td>
+                            <a href="/AdministratorUsers/UrediKupca?KorisnikID=@x.KorisnikID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                            <a href="/AdministratorUsers/ObrisiKupca?KorisnikID=@x.KorisnikID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                            <a href="/AdministratorUsers/DodijeliAdmina?KorisnikID=@x.KorisnikID" class="btn btn-light btn-sm " style="background-color: gray; border: 1px solid black"><span class="glyphicon glyphicon-font"></span>Dodijeli ulogu admina</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pagination-container">
+            <nav>
+                <ul class="pagination"></ul>
+            </nav>
+        </div>
+        <a href="/AdministratorUsers/DodajKupca" class="btn btn-success">Dodaj novog korisnika</a><a href="/AdministratorProizvod/Index" class="btn btn-secondary">Vrati se na početak</a>
+
+    </div>
+    <script src="~/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
+<script>
+    $(document).ready(function () { 
+    var table = '#myTable'
+    $('#maxRows').on('change', function () {
+        $('.pagination').html('')
+        var trnum = 0
+        var maxRows = parseInt($(this).val())
+        var totalRows = $(table + ' tbody tr').length
+        $(table + ' tr:gt(0)').each(function () {
+            trnum++
+            if (trnum > maxRows) {
+                $(this).hide()
+            }
+            if (trnum <= maxRows) {
+                $(this).show()
+            }
+        })
+        if (totalRows > maxRows) {
+            var pagenum = Math.ceil(totalRows / maxRows)
+            for (var i = 1; i <= pagenum;) {
+                $('.pagination').append('<li data-page = "' + i + '">\<span>' + i++ + '<span class="sr-only">(current)</span></span>\</li>').show()
+            }
+        }
+        $('.pagination li:first-child').addClass('active')
+        $('.pagination li').on('click', function () {
+            var pageNum = $(this).attr('data-page')
+            var trIndex = 0;
+            $('.pagination li').removeClass('active')
+            $(this).addClass('active')
+            $(table + ' tr:gt(0)').each(function () {
+                trIndex++
+                if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
+                    $(this).hide()
+                } else {
+                    $(this).show()
+                }
+            })
+        })
+
+    })
+      $(function () {
+        $('table tr:eq(0)').prepend('<th>RB</th>')
+        var rb = 0;
+        $('table tr:gt(0)').each(function () {
+            rb++
+            $(this).prepend('<td>'+rb+'</td>')
+        })
+      })
+       });
+</script>
+

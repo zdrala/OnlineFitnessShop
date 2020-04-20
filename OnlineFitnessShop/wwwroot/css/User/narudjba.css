@@ -1,0 +1,408 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-login100 {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.login100 {
+    width: 700px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 55px 30px 55px;
+}
+
+.frm-label{
+    width: 80%;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10%;
+    font-weight: bolder;
+}
+
+
+.form-control{
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#sel,#lab{
+    margin-left:35px;
+    margin-right:0;
+}
+
+input.form-control:read-only {
+    background-color: white;
+}
+
+#Naslov{
+    text-align:center;
+    margin-top:80px;
+}
+#Naslov:first-of-type{
+    margin-top:0;
+}
+
+#ukupno{
+    text-align:left;
+}
+
+.ukupnoParagraf {
+    display: inline-block;
+    color: black;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.ukupnoParagrafC{
+    display: inline-block;
+    color: black;
+    font-size: 18px;
+    margin-bottom: 0px;
+    width:100px;
+    text-align:right;
+}
+
+#lastP,#lastP2{
+    font-weight:600;
+}
+
+.ukupnoParagrafF{
+    display:inline-block;
+    margin-right:30px;
+    color:black;
+    font-size:14px;
+    margin-bottom:0px;
+    width:150px;
+}
+
+.ukupnoHR {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 1px solid grey;
+    margin-right:30%;
+    display: block;
+}
+
+hr {
+    border-top: 1px solid black;
+}
+
+.form-group{
+    margin-bottom:0;
+}
+
+.smbt-btn {
+    background-color: #2b7ecc;
+    padding: 10px 50px 10px 50px;
+    color:white;
+    text-transform:uppercase;
+    margin-top:50px;
+    text-align:center;
+    border:1px solid black;
+}
+
+.divZabttn{
+   text-align:center;
+}
+
+.container2 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.t2{
+    margin-left:35px;
+    margin-bottom:50px;
+}
+.t3 {
+    margin-left: 35px;
+}
+.t4 {
+    margin-left: 35px;
+    color:gray;
+}
+
+#kartice{
+    display:none;
+}
+
+
+    /* Hide the browser's default radio button */
+    .container2 input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container2:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container2 input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container2 input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container2 .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.cont {
+    top: 300px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.popup {
+    display: none;
+    width: 600px;
+    height: 195px;
+    background-color: white;
+    z-index: 1000;
+    margin: 0 auto;
+    position: fixed;
+    border: 1px solid black;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:40%;
+}
+
+.txtP{
+    font-size:16px;
+    color:black;
+    display:block;
+    letter-spacing:1px;
+    margin-right:0px;
+    margin-bottom:0px;
+    text-align:center;
+}
+
+.txtP:first-of-type{
+    margin-top:30px;
+    text-transform:uppercase;
+    font-weight:bold;
+    font-size:18px;
+}
+.txtP:last-of-type{
+    margin-bottom:50px;
+}
+
+.options{
+    width:100%;
+    bottom:0;
+    padding:0px 24px 10px 24px;
+}
+
+.a-c {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.a-c:hover{
+    text-decoration:none;
+}
+
+.a-c:first-child{
+    float:left;
+    width:48%;
+    border:1px solid black;
+    background-color:#33cc00;
+    color:white;
+}
+
+.a-c:first-child:hover{
+    background-color:#2b7ecc;
+    border:none;
+    color:white;
+}
+.a-c:last-child:hover{
+    cursor:pointer;
+}
+
+.a-c:last-child {
+    float: right;
+    width: 48%;
+    background-color: #cc2900;
+    border: 1px solid black;
+}
+
+.cover{
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    background-color:rgba(0,0,0,0.7);
+    z-index:99;
+    top:0;
+    left:0;
+}
+
+.error {
+    color: red;
+    border: 1px solid red;
+}
+
+.error:focus{
+    border-color: red;
+    box-shadow: unset;
+}
+
+#Adresa-error{
+    position: absolute;
+    display: flex;
+    margin-left: 60px;
+    width: 200px;
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    border: none;
+}
+
+#sel-error {
+    display: flex;
+    margin-left: 35px;
+    width: 200px;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    border: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .popup{
+        width: 400px;
+        height:240px;
+    }
+
+    .txtP {
+        line-height:unset;
+        margin-top:30px;
+        margin-bottom:28px;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .popup {
+        width: 380px;
+        height: 240px;
+    }
+
+    .txtP {
+        line-height: unset;
+        margin-top: 30px;
+        font-size:14px;
+        margin-bottom: 33px;
+    }
+
+    .options{
+        padding:0;
+    }
+
+    .a-c:first-child {
+        width: 43%;
+        margin-left: 20px;
+    }
+
+    .a-c:last-child {
+        width: 43%;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 395px){
+
+    .popup {
+        width: 290px;
+        height:230px;
+    }
+
+    .txtP {
+        line-height: unset;
+        margin-top: 20px;
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+
+    .options {
+        padding: 0;
+    }
+
+    .a-c{
+        padding:7px 0px;
+    }
+    .a-c:first-child{
+        width:40%;
+        margin-left:20px;
+    }
+    .a-c:last-child{
+        width:40%;
+        margin-right:20px;
+    }
+}

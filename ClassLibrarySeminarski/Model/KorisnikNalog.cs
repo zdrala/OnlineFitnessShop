@@ -16,5 +16,6 @@ namespace ClassLibrarySeminarski.Model
         public VrstaKorisnika VrstaKorisnika { get; set; }
         [ForeignKey("VrstaKorisnikaID")]
         public int VrstaKorisnikaID { get; set; }
+        public bool Obrisan { get; set; }
     }
 }

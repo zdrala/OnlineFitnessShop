@@ -1,0 +1,121 @@
+﻿@using OnlineFitnessShop.ViewModels.Kupac;
+@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@model OnlineFitnessShop.ViewModels.Kupac.KarticaVM;
+@{
+    string poruka = (string)TempData["poruka"];
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/User/cssZaView.css">
+</head>
+<body>
+    <div class="container-l">
+        <div class="l2">
+            <form asp-action="SnimiKarticu" id="add">
+
+                @if (poruka != null)
+                {
+
+                    <div class="alert alert-danger">
+                        @poruka
+                    </div>
+                }
+
+                <input asp-for="KorisnikID" value="@Model.KorisnikID" hidden /><br />
+
+                <div class="form-group">
+                    <label class="labelB">Vrsta kartice</label><br />
+                    <select asp-for="NazivKartice" asp-items="@Model.vrste" class="selectB">
+                        <option hidden readonly value="">Odaberi vrstu</option>
+                    </select><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Broj kartice</label><br />
+                    <input asp-for="BrojKartice" class="inputB" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Security code</label><br />
+                    <input asp-for="Code" type="number" value="" class="inputB" /><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Mjesec isteka</label><br />
+                    <select asp-for="MjesecIsteka" asp-items="@Model.mjeseci" class="selectB">
+                        <option hidden readonly value="">Odaberi mjesec</option>
+                    </select><br />
+                </div>
+
+                <div class="form-group">
+                    <label class="labelB">Godina isteka</label><br />
+                    <select asp-for="GodinaIsteka" asp-items="@Model.godine" class="selectB">
+                        <option hidden readonly value="">Odaberi godinu</option>
+                    </select><br />
+                </div>
+
+                <div class="button-cont">
+                    <button class="btn btn-info" type="submit">DODAJ KARTICU</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#add").validate({
+        rules: {
+            NazivKartice: {
+                required: true
+            },
+            BrojKartice: {
+                required: true,
+                regex: /^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/
+            },
+            Code: {
+                required: true,
+                minlength: 3,
+                regex: /^[0-9]{3,4}$/
+            },
+            MjesecIsteka: {
+                required: true
+            },
+            GodinaIsteka: {
+                required: true
+            }
+        },
+        messages: {
+            NazivKartice: {
+                required: "Obavezno polje!"
+            },
+            BrojKartice: {
+                required: "Obavezno polje!",
+                regex: "Format: XXXX-XXXX-XXXX-XXXX"
+            },
+            Code: {
+                required: "Obavezno polje!",
+                minlength: "Minimalno unesi 3 broja!",
+                regex: "Code mora sadržavati 3 ili 4 broja !"
+
+            },
+            MjesecIsteka: {
+                required: "Obavezno polje!"
+            },
+            GodinaIsteka: {
+                required: "Obavezno polje!"
+            }
+        }
+
+
+    });
+</script>

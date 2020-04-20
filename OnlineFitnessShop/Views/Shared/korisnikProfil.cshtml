@@ -1,17 +1,16 @@
 ﻿
 @{
-    Layout = "KupacLayout";
+    Layout = "UserLayout";
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="~/css/Kupac/korisnickiPanel.css">
+    <link rel="stylesheet" href="~/css/User/korisnickiPanel.css">
 </head>
 
 <body>
-       <hr/>
-
+       
         <div class="mobile-txt">
             <p class="tekst">Korisnički panel</p>
         </div>
@@ -22,13 +21,13 @@
                 <div class="icon-bar"></div>
             </a>
             <nav class="nav-korisnik" id="navID">
-                <h5>KORISNIČKI PANEL</h5>
                 <ul>
-                    <li><a href="/Kupac/Info" class="stavka">Korisnički podaci</a></li>
-                    <li><a href="/Kupac/Update" class="stavka" >Izmjena podataka</a></li>
-                    <li><a href="/Kupac/UpdatePassword" class="stavka">Promjena password-a</a></li>
-                    <li><a href="/Kupac/UpdateUsername" class="stavka">Promjena username-a</a></li>
-                    <li><a href="#" class="stavka">Status narudžbi</a></li>
+                    <li><a href="/UserData/Informacije" class="stavka">Korisnički podaci</a></li>
+                    <li><a href="/UserData/Update" class="stavka">Izmjena podataka</a></li>
+                    <li><a href="/UserData/UpdatePassword" class="stavka">Promjena password-a</a></li>
+                    <li><a href="/UserData/UpdateUsername" class="stavka">Promjena username-a</a></li>
+                    <li><a href="/UserData/Kartice" class="stavka">Bankovne kartice</a></li>
+                    <li><a href="/UserData/Narudzbe?page=1" class="stavka">Moje narudžbe</a></li>
                 </ul>
             </nav>
 

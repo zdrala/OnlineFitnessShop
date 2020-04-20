@@ -1,0 +1,78 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    ViewData["Title"] = "PregledajNarudzbu";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.NarudzbaSoloPrikazVM
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz narudzbi na cekanju</title>
+</head>
+<body>
+    <div class="tabela">
+        <h3>Narudžba na čekanju</h3>
+        <table class="table table-hover table-bordered ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ime i prezime kupca</th>
+                    <th>Datum narudžbe</th>
+                    <th>Grad i adresa</th>
+                    <th>Status</th>
+                    <th>Iznos</th>
+                    <th>Akcija</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+                        @Model.ImePrezimeKupca
+                    </td>
+                    <td>
+                        @Model.DatumNarucivanja.ToString("dd.MM.yyyy")
+                    </td>
+                    <td>
+                        @Model.Grad_Adresa
+                    <td>
+                        @Model.StatusNarudzbe
+                    </td>
+                    <td>
+                        @Model.IznosNarudzbe
+                    </td>
+                    <td>
+                        <a href="/AdministratorOrders/PregledajNarudzbu?NarudzbaID=@Model.NarudzbaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>Pregledaj narudžbu</a>
+                        <a href="/AdministratorOrders/PrihvatiNarudzbu?NarudzbaID=@Model.NarudzbaID" class="btn btn-success btn-sm "><span class="glyphicon glyphicon-ok"></span>Prihvati</a>
+                        <a href="/AdministratorOrders/OdbijNarudzbu?NarudzbaID=@Model.NarudzbaID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-minus"></span>Odbij</a>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <a href="/AdministratorOrders/PrikazNarudzbiNaCekanju" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-arrow-left"></span>Vrati na prikaz narudžbi</a>
+
+        <div id="nekiID"></div>
+    </div>
+    
+</body>
+</html>
+
+
+<script>
+    $(document).ready(function(parameters) {
+        $.get("/AdministratorAjax/Index?NarudzbaID=@Model.NarudzbaID",
+            function(rezultat, status) {
+                $("#nekiID").html(rezultat);
+
+            });
+    });
+</script>
+

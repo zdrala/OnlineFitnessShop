@@ -1,0 +1,88 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@{
+    int brojac = 0;
+    //var dobavljaci = (List<Dobavljac>)ViewData["Dobavljaci"];
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodatakPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dodataka</title>
+    <script src="~/js/Administrator/ProizvodiFilteri.js"></script>
+</head>
+<body>
+    <div class="container" id="cont1">
+        <p class="pClass">
+            Filter za tip :
+        </p>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterPojasevi()">Pojasevi
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd2" type="radio" name="optradio" onclick="filterŠejkeri()">Šejkeri
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterSteznici()">Steznici
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterTorbe()">Torbe
+        </label>
+        <label class="radio-inline">
+            <input lass="option-input radio" id="rd1" type="radio" name="optradio" onclick="filterSvi()" checked>Svi proizvodi
+        </label>
+
+    </div>
+
+    <div class="proizvodi">
+        <div class="tabela">
+
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Slika</th>
+                        <th>Naziv</th>
+                        <th>Cijena</th>
+                        <th>Tip dodatka</th>
+                        <th>Kolicina</th>
+                        <th>Akcija</th>
+                    </tr>
+                </thead>
+                <tbody id="b-id">
+                    @foreach (var x in @Model.podaciDodatci)
+                    {
+                        <tr id="red-@brojac">
+
+                            <td>
+                                <img src="/images/@x.ImageUrl" width="50px" height="50px" />
+                            </td>
+                            <td>
+                                @x.Naziv
+                            </td>
+                            <td>
+                                @x.Cijena
+                            <td class="tipDodatka">
+                                @x.TipDodatka
+                            </td>
+                            <td>
+                                @x.Kolicina
+                            </td>
+                            <td>
+                                <a href="/AdministratorProizvod/UrediDodatak?id=@x.DodatakID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                                <a href="/AdministratorProizvod/ObrisiDodatak?id=@x.DodatakID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                                <a href="/AdministratorProizvod/PrikazKomentaraZaProizvod?id=@x.ProizvodID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>Prikaži komentare</a>
+                            </td>
+                        </tr>
+                        brojac = brojac + 1;
+                    }
+                </tbody>
+            </table>
+
+            <a href="/AdministratorProizvod/DodajDodatak" class="btn btn-success">Dodaj novi dodatak</a>
+        </div>
+    </div>
+</body>
+</html>

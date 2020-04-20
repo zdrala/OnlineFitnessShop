@@ -20,5 +20,7 @@ namespace ClassLibrarySeminarski.Model
         public DobavljacKategorije DobavljacKategorija { get; set; }
         [ForeignKey("DobavljacKategorijaID")]
         public int DobavljacKategorijaID { get; set; }
+
+        public bool Obrisan { get; set; }
     }
 }

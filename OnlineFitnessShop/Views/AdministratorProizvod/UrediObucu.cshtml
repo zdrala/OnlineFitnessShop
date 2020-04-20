@@ -1,0 +1,176 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "UrediObucu";
+
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodajObucuVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Izmijeni obuću</title>
+
+</head>
+<body>
+
+    <div class="UrediProizvodForm">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Izmijena podataka o obući
+            </div>
+        </div>
+        <div class="slikaSuplement">
+            <img src="/images/@Model.imageUrl" width="250px" height="250px" />
+        </div>
+        <form asp-action="SpremiEditObuce" enctype="multipart/form-data" class="urediForma">
+
+            <input asp-for="ProizvodID" class="form-control" hidden /><br />
+            <input asp-for="ObucaID" class="form-control" hidden /><br />
+            <div class="form-group">
+                <label>Naziv proizvoda</label>
+                <input asp-for="Naziv" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Cijena</label>
+                <input asp-for="Cijena" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label>Dobavljač za ovaj proizvod</label>
+                <select asp-for="DobavljacID" class="form-control" asp-items="Model.dobavljaci">
+                    <option hidden readonly>Odaberi dobavljača za ovaj proizvod</option>
+
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ovaj artikal je za spol:</label>
+                <select asp-for="Spol" class="form-control" asp-items="Model.spol">
+                    <option hidden readonly>Odaberi spol</option>
+
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Brend</label>
+                <input asp-for="Brend" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Namjena</label>
+                <input asp-for="Namjena" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Opis</label>
+                <input asp-for="Opis" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Odaberite novu sliku(Neobavezno polje)</label>
+                <input asp-for="@Model.slika" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-secondary"><span class="glyphicon glyphicon-edit"></span>Spremi izmijene</button>
+
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $(".urediForma").validate({
+        rules: {
+            Naziv: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z. ]{1,}/
+            },
+            Cijena: {
+                required: true,
+                min: 1,
+                number: true
+
+            },
+            DobavljacID: {
+                required: true
+
+            },
+            Spol: {
+                required: true
+
+            },
+            Namjena: {
+                required: true
+
+
+            },
+            Brend: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z. ]{1,}/
+            },
+            Opis: {
+                required: true
+            }
+
+
+
+        },
+        messages: {
+            Naziv: {
+                required: "Naziv obuće je obavezno polje!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            Cijena: {
+                required: "Cijena obuće je obavezna!",
+                min: "unesi cijenu vecu od 0!",
+                number:"Dozvoljen unos brojeva samo!"
+
+            },
+            DobavljacID: {
+                required: "Odaberi dobavljača za obuću!"
+            },
+            Spol: {
+                required: "Odaberi spol za ovu obuću!"
+
+            },
+            Namjena: {
+                required: "Unesi namjenu"
+
+            },
+            Brend: {
+                required: "Unesi brend!",
+                minlength: "Minimalno unesi 3 slova!",
+                regex: "Prvo slovo mora biti veliko"
+            },
+            Opis: {
+                required: "Unesi opis vezan za ovaj proizvod"
+            }
+
+
+
+        }
+
+
+    });
+</script>

@@ -1,0 +1,109 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@using Microsoft.EntityFrameworkCore;
+@{
+   Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+    <head>
+        <script src="~/js/User/Korpa.js"></script>
+        <link rel="stylesheet" href="~/css/User/korpa.css">
+    </head>
+    <body>
+        <h3 id="Naslov">Vaša Korpa</h3>
+        <hr />
+
+        <div id="praznaKorpaID" class="empty">
+            Vaša korpa je prazna!
+        </div>
+
+        <div class="cont">
+            <div id="popupID" class="popup">
+                <p class="txtP"> Da li sigurno želite da izbrišete proizvod iz korpe?</p>
+                <div class="options">
+                    <a id="link1" class="a-c" href="#">NE</a>
+                    <a id="link2" class="a-c" href="#">DA</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="coverID" class="cover">
+        </div>
+
+        <div id="content-div">
+            <div id="korpaContainerID">
+                <table id="korpaTabela">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Proizvod</th>
+                            <th>Veličina</th>
+                            <th>Cijena</th>
+                            <th>Količina</th>
+                            <th>Ukupno</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div id="ukupnoDIV">
+                <p>Ukupno: </p>
+                <strong id="placeUkupno"></strong>
+            </div>
+
+                    
+            <div class="divZabttn">
+                <input type="submit" value="Potvrdi" id="btn-P" name="btn" class="smbt-btn" />
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+       
+            $("#btn-P").click(function (e) {
+
+                var stringA = new Array();
+                var stringB = new Array();
+                var stringC = new Array();
+                var stringD = new Array();
+
+
+                var korpa = JSON.parse(sessionStorage.getItem('a'));
+
+                stringA[0] = 0;
+                stringB[0] = "null";
+                stringC[0] = 0;
+                stringD[0] = "null";
+
+
+                for (var i = 0; i < korpa.length; i++) {
+                    stringA.push(parseInt(korpa[i].Kolicina));
+                    stringB.push(korpa[i].VrstaName);
+                    stringC.push(parseInt(korpa[i].ProizvodID));
+                    stringD.push(korpa[i].Size);
+
+                }
+                console.log(stringA);
+                console.log(stringB);
+                console.log(stringC);
+                console.log(stringD);
+
+
+                var postData = { values: stringC, values2: stringB, values3: stringA, values4: stringD };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/UserInterface/GetKorpaItems",
+                    data: postData,
+                    success: function (model) {
+                        window.location.href = "NarudjbaDetails";
+                        console.log(model);
+                    },
+                    dataType: "json",
+                    traditional: true
+                });
+
+            });
+        </script>
+    </body>

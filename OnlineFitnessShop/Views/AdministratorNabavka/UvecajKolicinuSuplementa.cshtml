@@ -1,0 +1,119 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using OnlineFitnessShop.ViewModels.AdministratorVMs;
+@{
+
+    ViewData["Title"] = "UvecajKolicinuSuplementa";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.SuplementSoloPrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dobavljaca suplemenata</title>
+</head>
+<body>
+    <div class="tabela" id="myTable">
+
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Slika</th>
+                    <th>Naziv</th>
+                    <th>Cijena</th>
+                    <th>Kategorija</th>
+                    <th>Tezina(kg)</th>
+                    <th>Akcija</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody id="b-id">
+
+                <tr>
+
+                    <td>
+                        <img src="/images/@Model.ImageUrl" width="50px" height="50px" />
+                    </td>
+                    <td>
+                        @Model.Naziv
+                    </td>
+                    <td>
+                        @Model.Cijena
+                    </td>
+                    <td class="kategorija">
+                        @Model.kategorijaSuplementacije
+                    </td>
+
+                    <td>
+                        @Model.Tezina
+                    </td>
+
+
+                    <td>
+                        <a href="/AdministratorNabavka/PrikazDobavljacaSuplemenata?id=@Model.SuplementacijaID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-search"></span>Prikaži dobavljače suplementacije</a>
+                        <a href="/AdministratorNabavka/UvecajKolicinuSuplementa?id=@Model.SuplementacijaID" class="btn btn-success btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uvećaj količinu na stanju</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="formaUnosKolicine">
+            <h3>Unesi novu količinu suplementa na stanju</h3>
+
+            <form asp-action="PrihvatiUnosKolicineNaStanju" id="validacijaUnosa">
+                <div class="form-group">
+                    <input name="suplementacijaID" class="form-control" value="@Model.SuplementacijaID" hidden />
+                    <input name="kolicina" class="form-control" />
+                </div>
+
+                <button id="prihvatiOdbijanjeDugme" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>Prihvati unos količine na stanje</button>
+
+            </form>
+
+        </div>
+
+
+        <a href="/AdministratorNabavka/ShowSuplementsOutOfStock" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-search"></span>Vrati na prikaz suplementacije van stanja</a>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+    $.validator.addMethod(
+        "regex",
+        function(value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#validacijaUnosa").validate({
+        rules: {
+           kolicina: {
+                number:true,
+                max: 50,
+           min:1
+
+            },
+
+        },
+        messages: {
+           kolicina: {
+                number:"Moguće samo brojeve unositi",
+
+                max: "Maksimalna količina za unijeti je 50!",
+                min:"Minimalna količina za unijeti je 1!"
+            },
+
+        }
+
+
+    });
+</script>

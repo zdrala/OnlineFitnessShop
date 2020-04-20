@@ -1,0 +1,107 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using OnlineFitnessShop.Helpers;
+@{
+
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+    string poruka = (string)TempData["greška-poruka"];
+    var x = ViewData["log"];
+
+}
+@model OnlineFitnessShop.ViewModels.Kupac.SuplementacijaPrikazVM
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz suplementacije</title>
+    <link rel="stylesheet" href="~/css/User/ProizvodiShop.css">
+    <script src="~/js/User/SuplementacijaPrikaz.js"></script>
+</head>
+<body>
+
+    <h2 id="nazivID">@Model.Naziv</h2>
+    <hr />
+
+    <span id="OdjecaID" hidden>@Model.SuplementacijaID</span>
+    <span id="ProizvodID" hidden>@Model.ProizvodID</span>
+    <span id="imgID" hidden>@Model.ImageUrl</span>
+    <span id="log" hidden>@x</span>
+
+
+    <div class="container-center">
+        <div class="center-form">
+            <div class="row">
+                <div class="form-half">
+
+                    <img src="/images/@Model.ImageUrl" width="400px" height="400px" />
+
+                </div>
+                <div class="form-half2">
+                    <h3>Informacije o proizvodu: </h3>
+                    <label class="label-class">Naziv: </label>
+                    <p class="p-inline">@Model.Naziv</p><br />
+                    <label class="label-class">Vrsta: </label>
+                    <p class="p-inline">@Model.kategorijaSuplementacije</p><br />
+                    <label class="label-class">Težina: </label>
+                    <p class="p-inline" id="tezinaiD">@Model.Tezina</p>
+                    <p class="p-inline">kg</p><br />
+                    <label class="label-class">Cijena:</label>
+                    <p class="p-inline" id="cijenaID" style="font-weight:bold;font-size:20px;">@Model.Cijena</p>
+                    <p class="p-inline"> KM</p><br />
+                    <div id="appear">
+                        <label class="label-class2" style="margin-top:10px;">Dostupna količina:</label>
+                        <input type="number" id="inputKol" class="input-cont2" readonly value="@Model.Kolicina" /><br />
+                    </div>
+
+                    <label class="label-class2" style="margin-top:10px;">Unesite količinu:</label>
+                    <input type="number" id="kol" class="input-cont" value="1" /><br />
+
+                    <button id="button-dodaj" class="dodaj" onclick="bttn()">DODAJ U KORPU</button>
+
+                    <button id="divZaError"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="komentar" id="komentari">Komentari (@Model.BrojKomentara)</h4>
+    <hr class="komentar-hr" />
+    <form asp-action="SpremiKomentarSuplement">
+        <div class="divZaNoviKoment">
+            <textarea class="areaText" placeholder="Unesite komentar..." asp-for="Komentar"></textarea>
+            <input asp-for="KorisnikID" value="@Model.KorisnikID" hidden />
+            <input asp-for="ProizvodID" value="@Model.ProizvodID" hidden />
+            <input asp-for="SuplementacijaID" value="@Model.SuplementacijaID" hidden />
+            <div class="button-koment">
+                <button type="submit" class="btn btn-info"> + Dodaj komentar</button>
+            </div>
+            @if (poruka != null)
+            {
+                <div class="error-koment">
+                    <button id="greska" type="button" class="btn btn-danger">@poruka</button>
+                </div>
+            }
+        </div>
+    </form>
+    <hr class="komentar-hr2" />
+
+    @foreach (var kom in Model.komentari)
+    {
+        <div class="divZaKoment">
+            <div class="slika-koment">
+                <img src="~/userPhoto/@kom.slikaUrl" />
+            </div>
+            <div class="komet-content">
+                <div class="contet-info">
+                    <h5 class="h5-coment1">@kom.ImeKorisnik</h5>
+                    <h5 class="h5-coment">@kom.DatumKomentarisanja</h5>
+                </div>
+                <div class="contet-text">
+                    <textarea class="komentar-text" readonly>@kom.komentarTekst</textarea>
+                </div>
+            </div>
+        </div>
+
+    }
+</body>
+</html>

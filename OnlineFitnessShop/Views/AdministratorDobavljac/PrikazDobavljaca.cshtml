@@ -1,0 +1,65 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using OnlineFitnessShop.ViewModels.AdministratorVMs;
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.PrikazDobavljacaVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz dobavljača</title>
+</head>
+<body>
+    <div class="tabela">
+    <table class="table table-hover table-bordered ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Naziv</th>
+                <th>Broj telefona</th>
+                <th>e-mail adresa</th>
+                <th>Grad</th>
+                <th>Adresa</th>
+                <th>Kategorija</th>
+                <th>Akcija</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.dobavljaci)
+            {
+                <tr>
+                    <td >
+                        @x.Naziv
+                    </td>
+                    <td > 
+                        @x.BrojTelefona
+                    </td>
+                    <td >
+                        @x.Email
+                    <td >
+                        @x.Grad
+                    </td>
+                    <td >
+                        @x.Adresa
+                    </td>
+                    <td >
+                        @x.DobavljacKategorija
+                    </td>
+                    
+                    <td >
+                        <a href="/AdministratorDobavljac/UrediDobavljaca?dobavljacid=@x.ID" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-pencil"></span>Uredi</a>
+                        <a href="/AdministratorDobavljac/ObrisiDobavljaca?dobavljacid=@x.ID" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-remove-circle"></span>Obrisi</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/AdministratorProizvod/Index" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>Nazad</a>
+    </div>
+</body>
+</html>

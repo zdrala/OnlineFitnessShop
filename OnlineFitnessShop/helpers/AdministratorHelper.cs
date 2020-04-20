@@ -3,6 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.AspNetCore.Mvc;
+using ClassLibrarySeminarski.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OData.Edm;
+using OnlineFitnessShop.helpers;
+using OnlineFitnessShop.ViewModels;
+using OnlineFitnessShop.ViewModels.AdministratorVMs;
+using OnlineFitnessShop.Core.Interfaces;
+using OnlineFitnessShop.Helpers;
+using System.Net.Mail;
+using System.Net;
+using Nexmo.Api;
 
 namespace OnlineFitnessShop.helpers
 {
@@ -120,6 +134,65 @@ namespace OnlineFitnessShop.helpers
 
             return dodatci;
 
+        }
+        public static List<SelectListItem> getVelicineOdjece()
+        {
+            List<SelectListItem> velicineOdjece = new List<SelectListItem>
+            {
+
+                new SelectListItem {Text = "S", Value = "S"},
+                new SelectListItem {Text = "M", Value = "M"},
+                new SelectListItem {Text = "L", Value = "L"},
+                new SelectListItem {Text = "XL", Value = "XL"}
+            };
+
+            return velicineOdjece;
+
+        }
+
+        public static void SendSuccessTransactionMail(string imeprezime,string proizvodi,string toMail,string iznos)
+        {
+            var fromEmail = new MailAddress("seminarskirs1test@gmail.com", "Seminarski RS1");
+            var toEmail = new MailAddress(toMail);
+            string subject = "";
+            string body = "";
+            var fromEmailPassword = "TestTestRS1";
+            subject = "Transaction success";
+            body = "Poštovani/na " + imeprezime + ",<br/>Vaša narudžba je uspješno procesuirana." +
+                "<br/><br/>"+"Proizvodi na vašoj narudžbi su:"+ "<br/>_____________________________________________________<br/>"+proizvodi+"<br/>_____________________________________________________<br/>"+
+                "IZNOS: "+iznos+"KM";
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+
+        }
+        public static void SendSMS(string imePrezime,string datumNarucivanja,string _to= "38762850277")
+        {
+            var client = new Client(creds: new Nexmo.Api.Request.Credentials
+            {
+                ApiKey = "a1b7b0cf",
+                ApiSecret = "5EvcyZFXB7tB8T8k"
+            });
+            var results = client.SMS.Send(request: new SMS.SMSRequest
+            {
+                from = "SeminarskiRS1",
+                to = _to,
+                text = "Postovani, Prihvatili ste narudzbu kupca " + imePrezime + ". Datum narucivanja: " + datumNarucivanja
+            }) ;
         }
     }
 }

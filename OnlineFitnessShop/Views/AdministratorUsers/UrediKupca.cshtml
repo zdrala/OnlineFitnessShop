@@ -1,0 +1,271 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "UrediKupca";
+    string error_porukaUser = (string)TempData["error_porukaUser"];
+    string error_porukaEmail = (string)TempData["error_porukaEmail"];
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.DodajKupacVM
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Uredi kupca</title>
+
+</head>
+<body>
+
+    <div class="dodajKupcaForm">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Izmijena podataka o korisniku
+            </div>
+        </div>
+        <form asp-action="SpremiEditKupca" enctype="multipart/form-data" id="dodavanjeKupca">
+            <div class="kupacFormPrviDio">
+                <div class="form-group">
+                    <input asp-for="KorisnikID" class="form-control" hidden />
+                    <input asp-for="KorisnikNalogID" class="form-control" hidden />
+                    <label>Ime kupca</label>
+                    <input asp-for="Ime" class="form-control" />
+                    <span asp-validation-for="Ime" class="text-danger error"></span><br />
+                </div>
+                <div class="form-group">
+                    <label>Prezime</label>
+                    <input asp-for="Prezime" class="form-control" />
+                    <span asp-validation-for="Prezime" class="text-danger"></span><br />
+                </div>
+
+
+                <div class="form-group">
+                    <label>Datum rođenja</label>
+                    @*<input asp-for="DatumRodjenja" class="form-control" />
+                <span asp-validation-for="DatumRodjenja" class="text-danger"></span>*@
+                    <select asp-for="DanRodjenja" class="form-control" asp-items="Model.dani">
+                        <span asp-validation-for="DanRodjenja" class="text-danger error"></span>
+
+
+                        <option hidden readonly value="">Dan:</option>
+                    </select>
+                    <br />
+                    <select asp-for="MjesecRodjenja" class="form-control" asp-items="Model.mjeseci">
+                        <span asp-validation-for="MjesecRodjenja" class="text-danger error"></span>
+                        <option hidden readonly value="">Mjesec:</option>
+                    </select>
+                    <br />
+                    <select asp-for="GodinaRodjenja" class="form-control" asp-items="Model.godine">
+                        <span asp-validation-for="GodinaRodjenja" class="text-danger error"></span>
+
+                        <option hidden readonly value="">Godina:</option>
+                    </select>
+                    <br />
+                </div>
+
+                <div class="form-group">
+                    <label>Email adresa</label>
+                    <input asp-for="EmailAdresa" class="form-control" />
+                    <span asp-validation-for="EmailAdresa" class="text-danger error"></span><br />
+                </div>
+                @if (error_porukaEmail != null)
+                {
+                    <br />
+                    <div class="alert alert-danger">
+                        @error_porukaEmail
+                    </div>
+                }
+                <div class="form-group">
+                    <label>Broj telefona</label>
+                    <input asp-for="BrojTelefona" class="form-control " />
+                    <span asp-validation-for="BrojTelefona" class="text-danger error"></span><br />
+                </div>
+            </div>
+            <div class="kupacFormDrugiDio">
+                <div class="form-group">
+                    <label>Adresa</label>
+                    <input asp-for="Adresa" class="form-control" />
+                    <span asp-validation-for="Adresa" class="text-danger error"></span><br />
+                </div>
+                <div class="form-group">
+                    <label>Grad</label>
+                    <select asp-for="GradID" class="form-control" asp-items="Model.gradovi">
+                        <span asp-validation-for="GradID" class="text-danger error"></span>
+                        <option hidden readonly value="">Odaberi grad dobavljača</option>
+
+                    </select>
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label>Korisničko ime</label>
+                    <input asp-for="KorisnickoIme" class="form-control" readonly/>
+                    <span asp-validation-for="KorisnickoIme" class="text-danger"></span><br />
+                </div>
+                @if (error_porukaUser != null)
+                {
+                    <br />
+                    <div class="alert alert-danger">
+                        @error_porukaUser
+                    </div>
+                }
+                <div class="form-group">
+                    <label>lozinka</label>
+                    <input  asp-for="Lozinka"    class="form-control" id="myInput" readonly id="myInput"/>
+                    <span asp-validation-for="Lozinka"  class="text-danger error"></span><br />
+                </div>
+                
+                <div class="form-group">
+                    <label>Nova lozinka(Opcionalno)</label>
+                    <input type="password" asp-for="Lozinka2"    class="form-control" />
+                    <span asp-validation-for="Lozinka2"  class="text-danger error"></span><br />
+                </div>
+                <div class="form-group">
+                    <label>Potvrdi novu lozinku</label>
+                    <input  type="password" asp-for="Lozinka3" class="form-control" />
+                    <span asp-validation-for="Lozinka3" class="text-danger error"></span><br />
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-secondary dodajDugme"><span class="glyphicon glyphicon-edit"></span>Spremi izmijene</button>
+
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        var x = document.getElementById("myInput");
+        if (x.type === "text")
+            x.type = "password";
+
+
+    });
+</script>
+<script>
+    $.validator.addMethod(
+        "regex",
+        function(value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#dodavanjeKupca").validate({
+        rules: {
+            Ime: {
+                required: true,
+                minlength: 3,
+                regex: /^[A-Z]+[a-zA-Z]{1,}/
+            },
+            Prezime: {
+                required: true,
+                minlength: 4,
+                regex: /^[A-Z]+[a-zA-Z]{1,}/
+            },
+            EmailAdresa: {
+                required: true,
+                maxlength: 80,
+                regex: /([a-z0-9.]{1,60})@@([a-z]{2,}).(com|ba)/
+            },
+            BrojTelefona: {
+                required: true,
+                //maxlength: 16,
+                //minlength: 16,
+                regex: /^\+387 06[0-9]{1}-[0-9]{3}-[0-9]{3}/
+            },
+            Adresa: {
+                required: true,
+                minlength: 5,
+                maxlength: 60
+            },
+            GradID: {
+                required: true
+
+            },
+            KorisnickoIme: {
+                required: true
+            },
+            Lozinka2: {
+
+                regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/,
+            },
+            Lozinka3: {
+                
+                regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/,
+                equalTo: Lozinka2
+            },
+            DanRodjenja: {
+                required:true
+            },
+            MjesecRodjenja: {
+                required:true
+            },
+            GodinaRodjenja: {
+                required:true
+            }
+
+
+
+        },
+        messages: {
+            Ime: {
+                required: "Obavezno unesi ime kupca!",
+                minlength: "Unesi minimalno 3 slova!",
+                regex:"Prvo slovo je veliko!"
+            },
+            Prezime: {
+                required: "Obavezno unesi prezime kupca!",
+                minlength: "Unesi minimalno 4 slova!",
+                regex:"Prvo slovo je veliko!"
+            },
+            EmailAdresa: {
+                required: "Unesi email adresu kupca!",
+                maxlength: "Email je previše dug!",
+                regex:"Format: nesto@nesto.com(ba)"
+            },
+            BrojTelefona: {
+                required: "Unesi broj kupca!",
+                //maxlength: "Broj telefona se sastoji od 16 znakova(uključujući ' ',-,+)",
+                //minlength: "Broj telefona se sastoji od 16 znakova(uključujući ' ',-,+)",
+                regex:"+387 06X-XXX-XXX"
+            },
+            Adresa: {
+                required: "Unesi adresu kupca!",
+                minlength: "Unesi 5 slova minimalno!",
+                maxlength:"Maksimalno se može unijeti 60 znakova!"
+            },
+            GradID:{
+           required :"Odaberi grad dobavljača!"
+            },
+            KorisnickoIme: {
+                required:"Obavezno unesi korisničko ime!"
+            },
+            Lozinka2: {
+                regex: "Minimalno 6 karaktera , 1 veliko slovo i 1 broj !",
+            },
+            Lozinka3: {
+                regex: "Minimalno 6 karaktera , 1 veliko slovo i 1 broj !",
+                equalTo: "potvrdi novu lozinku!"
+            },
+            DanRodjenja: {
+                required:"Odaberi dan rođenja!"
+            },
+            MjesecRodjenja: {
+                required:"Odaberi mjesec rođenja!"
+            },
+            GodinaRodjenja: {
+                required:"Odaberi godinu rođenja!"
+            }
+        }
+
+
+    });
+</script>

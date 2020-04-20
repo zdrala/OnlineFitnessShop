@@ -14,10 +14,12 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.OData.Edm" Version="7.6.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="Nexmo.Csharp.Client" Version="4.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrarySeminarski\ClassLibrarySeminarski.csproj" />
+    <ProjectReference Include="..\OnlineFitnessShop.Core\OnlineFitnessShop.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop.csproj": {}
+    "D:\\Clone za github\\webapp\\OnlineFitnessShop\\OnlineFitnessShop.csproj": {}
   },
   "projects": {
-    "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
+    "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
+        "projectUniqueName": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
         "projectName": "ClassLibrarySeminarski",
-        "projectPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
+        "projectPath": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\obj\\",
+        "outputPath": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -75,14 +75,14 @@
         }
       }
     },
-    "D:\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop.csproj": {
+    "D:\\Clone za github\\webapp\\OnlineFitnessShop.Core\\OnlineFitnessShop.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop.csproj",
-        "projectName": "OnlineFitnessShop",
-        "projectPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop.csproj",
+        "projectUniqueName": "D:\\Clone za github\\webapp\\OnlineFitnessShop.Core\\OnlineFitnessShop.Core.csproj",
+        "projectName": "OnlineFitnessShop.Core",
+        "projectPath": "D:\\Clone za github\\webapp\\OnlineFitnessShop.Core\\OnlineFitnessShop.Core.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\OnlineFitnessShop\\obj\\",
+        "outputPath": "D:\\Clone za github\\webapp\\OnlineFitnessShop.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -101,8 +101,84 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
-                "projectPath": "D:\\OnlineFitnessShop\\OnlineFitnessShop\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj"
+              "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
+                "projectPath": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.ViewFeatures": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Clone za github\\webapp\\OnlineFitnessShop\\OnlineFitnessShop.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Clone za github\\webapp\\OnlineFitnessShop\\OnlineFitnessShop.csproj",
+        "projectName": "OnlineFitnessShop",
+        "projectPath": "D:\\Clone za github\\webapp\\OnlineFitnessShop\\OnlineFitnessShop.csproj",
+        "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
+        "outputPath": "D:\\Clone za github\\webapp\\OnlineFitnessShop\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {
+              "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj": {
+                "projectPath": "D:\\Clone za github\\webapp\\ClassLibrarySeminarski\\ClassLibrarySeminarski.csproj"
+              },
+              "D:\\Clone za github\\webapp\\OnlineFitnessShop.Core\\OnlineFitnessShop.Core.csproj": {
+                "projectPath": "D:\\Clone za github\\webapp\\OnlineFitnessShop.Core\\OnlineFitnessShop.Core.csproj"
               }
             }
           }
@@ -141,6 +217,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "Nexmo.Csharp.Client": {
+              "target": "Package",
+              "version": "[4.3.2, )"
             }
           },
           "imports": [

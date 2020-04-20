@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrarySeminarski.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
@@ -35,6 +36,10 @@ namespace OnlineFitnessShop.ViewModels
         [Required]
         public int GradID { get; set; }
 
+
+        public List<SelectListItem> gradovi;
+
+        public List<SelectListItem> dobavljaciKategorije;
 
         [Required(ErrorMessage = "Unesi adresu!")]
         [StringLength(60,MinimumLength = 5,ErrorMessage = "Unesi 5 slova minimalno!")]

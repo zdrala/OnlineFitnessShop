@@ -10,7 +10,7 @@ namespace ClassLibrarySeminarski.Model
     {
         [Key]
         public int KomentarID { get; set; }
-        
+
         public Proizvod Proizvod { get; set; }
         [ForeignKey("ProizvodID")]
         public int ProizvodID { get; set; }
@@ -19,7 +19,8 @@ namespace ClassLibrarySeminarski.Model
         [ForeignKey("KorisnikID")]
         public int KorisnikID { get; set; }
 
-        public string Tekst;
-        public int LikeCounter { get; set; }
+        public string Tekst   { get; set; }
+
+        public DateTime DatumKomentarisanja { get; set; }
     }
 }

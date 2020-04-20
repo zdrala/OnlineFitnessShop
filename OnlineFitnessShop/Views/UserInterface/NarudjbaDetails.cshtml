@@ -1,0 +1,201 @@
+﻿@{
+    string error_poruka = (string)TempData["error_poruka"];
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.Kupac.NarudjbaInfoVM
+
+
+@if (error_poruka != null)
+{
+    <style>
+        
+.emptyC {
+    background-color: rgb(242,222,222);
+    border: 1px solid #ffcccc;
+    color: #cc0044;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+#NaslovH3 {
+    text-align: center;
+}
+
+#NaslovHR {
+    width: 60%;
+    color: black;
+}
+    </style>
+    <h3 id="NaslovH3">Greška</h3>
+    <hr id="NaslovHR" />
+    <div class="emptyC">
+        @error_poruka
+    </div>
+}
+@if (error_poruka == null)
+{
+    <head>
+        <title>Narudžba</title>
+        <link rel="stylesheet" href="~/css/User/narudjba.css">
+        <script src="~/js/User/narudzba.js"></script>
+    </head>
+    <body>
+        <div class="cont">
+            <div id="popupID" class="popup">
+                <p class="txtP">Nemate dodanih kartica !</p>
+                <p class="txtP">Opcija plaćanja karticom vam nije dostupna.</p>
+                <div class="options">
+                    <a id="link1" class="a-c" href="/UserData/DodajKarticu">DODAJ KARTICU</a>
+                    <a id="link2" class="a-c">ZATVORI</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="coverID" class="cover">
+        </div>
+
+        <div class="container-login100">
+            <div class="login100">
+                <form asp-action="SpremiNarudjbu" id="add">
+
+                    <h3 id="Naslov">Odaberite adresu isporuke</h3>
+                    <hr />
+
+                    <input asp-for="KorisnikID" class="form-control" value="@Model.KorisnikID" hidden /><br />
+                    <input asp-for="IznosBezPDV" class="form-control" value="@Model.IznosBezPDV" hidden /><br />
+                    <input asp-for="IznosSaPDV" class="form-control" value="@Model.IznosSaPDV" hidden /><br />
+                    <input id="karticeCount" value="@Model.kartice.Count" hidden /><br />
+
+
+
+
+                    <div class="form-group">
+                        <label class="frm-label">Ime</label>
+                        <input asp-for="Ime" class="form-control" value="@Model.Ime" readonly /><br />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="frm-label">Prezime</label>
+                        <input asp-for="Prezime" class="form-control" value="@Model.Prezime" readonly /><br />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="frm-label">Broj telefona</label>
+                        <input asp-for="Telefon" class="form-control" value="@Model.Telefon" readonly /><br />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="frm-label">Adresa</label>
+                        <input asp-for="Adresa" autocomplete="off" class="form-control" value="@Model.Adresa" /><br />
+                    </div>
+                    <div class="form-group">
+                        <label class="frm-label">Grad</label>
+                        <select asp-for="GradID" asp-items="@Model.gradovi" value="@Model.GradID" class="form-control">
+                            <option hidden readonly>Odaberi grad</option>
+                        </select>
+                    </div>
+
+                    <h3 id="Naslov">Odaberite način plaćanja</h3>
+                    <hr />
+
+                    <label class="container2">
+                        PLAĆANJE POUZEĆEM
+                        <input type="radio" checked="checked" id="rd1" name="radio" onclick="radio1Check()">
+                        <span class="checkmark"></span>
+                    </label>
+                    <h5 class="t2">Plaćanje pouzećem kuriru prilikom preuzimanja pošiljke.</h5>
+                    <label class="container2">
+                        PLAĆANJE KARTICOM
+                        <input type="radio" name="radio" id="rd2" onclick="karticeCheck()">
+                        <span class="checkmark"></span>
+                    </label>
+                    <h5 class="t3">Za plaćanje karticom morate imati dodanu karticu.</h5>
+                    <div id="kartice">
+                        <div class="form-group">
+                            <label id="lab" class="frm-label">Kartica:</label>
+                            <select id="sel" asp-for="KarticaID" asp-items="@Model.kartice" class="form-control">
+                                <option hidden readonly value="">Odaberite karticu</option>
+                            </select>
+                            <h6 class="t4">Napomena: Prikazane su samo vaše aktivne kartice</h6>
+                        </div>
+                    </div>
+
+
+                    <h3 id="Naslov">Ukupno za plaćanje</h3>
+                    <hr />
+
+                    <div id="ukupno">
+                        <div>
+                            <p class="ukupnoParagrafF">Ukupno:</p>
+                            <p class="ukupnoParagrafC">@Math.Round(Model.IznosBezPDV, 2)</p>
+                            <p class="ukupnoParagraf">KM</p>
+                            <hr class="ukupnoHR" />
+                        </div>
+                        <div>
+                            <p class="ukupnoParagrafF">Troškovi dostave:</p>
+                            <p class="ukupnoParagrafC" width="50px">0</p>
+                            <p class="ukupnoParagraf">KM</p>
+                            <hr class="ukupnoHR" />
+                        </div>
+                        <div>
+                            <p class="ukupnoParagrafF">Ukupno sa PDV-om:</p>
+                            <p id="lastP2" class="ukupnoParagrafC" width="50px">@Math.Round(Model.IznosSaPDV, 2)</p>
+                            <p id="lastP" class="ukupnoParagraf">KM</p>
+                            <hr class="ukupnoHR" />
+                        </div>
+                    </div>
+
+                    <div class="divZabttn">
+                        <button type="submit" class="smbt-btn">
+                            Potvrdi
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </body>
+    <script>
+        $.validator.addMethod(
+            "regex",
+            function (value, element, regexp) {
+                var check = false;
+                return this.optional(element) || regexp.test(value);
+            },
+            "Please check your input."
+        );
+
+        $("#add").validate({
+            rules: {
+                Adresa: {
+                    required: true,
+                    minlength: 5
+                },
+                GradID: {
+                    required: true
+                },
+                KarticaID: {
+                    required: true
+                }
+            },
+            messages: {
+                Adresa: {
+                    required: "Obavezno polje!",
+                    minlength: "Minimalno unesi 5 slova!"
+                },
+                GradID: {
+                    required: "Obavezno polje!"
+                },
+                KarticaID: {
+                    required: "Obavezno polje!"
+                }
+            }
+        });
+
+    </script>
+}
+
+
+

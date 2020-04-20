@@ -1,0 +1,531 @@
+﻿.table {
+}
+
+.proizvod {
+    display: inline-block;
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid grey;
+    margin-top: 20px;
+}
+
+.proizvod:hover{
+    border:1px solid #2b7ecc;
+    opacity:0.7;
+}
+
+.p-container {
+    text-align: center;
+    width: auto;
+}
+
+.p-container img{
+    width:300px;
+    height:300px;
+}
+
+h2{
+    text-align:center;
+    margin-top:30px;
+}
+
+.genderFilter {
+    margin-left: 10%;
+}
+
+.genderFilter input{
+    display:inline;
+}
+
+
+#cont1{
+    float:left;
+    width:auto;
+    padding-left:0px;
+    margin-left:300px;
+}
+
+#cont2 {
+    float: right;
+    margin-right:300px;
+}
+
+.pClass{
+    display:inline;
+    color:black;
+    margin-right:20px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.img-div{
+    margin-left:200px;
+    width:auto;
+    margin-top:30px;
+    position:absolute;
+}
+
+.cont-div {
+    margin-left: 720px;
+    margin-top: 50px;
+}
+
+.p-inline{
+    display:inline;
+    margin-left:10px;
+    font-size:16px;
+    color:black;
+}
+
+.label-class{
+    width:50px;
+}
+
+.label-class2{
+    width:auto;
+    margin-top:30px;
+}
+
+.li-cont {
+    list-style-type: none;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid gray;
+    text-align: center;
+    padding-top: 9px;
+    margin-right: 6px;
+}
+
+.li-cont:hover{
+    cursor:pointer;
+}
+
+
+.ul-cont{
+    margin-top:20px;
+}
+
+.active {
+    background: #2b7ecc;
+    color:white;
+}
+
+.input-cont {
+    width: 44px;
+    margin-left: 30px;
+}
+
+.input-cont2 {
+    width: 44px;
+    margin-left: 17px;
+}
+
+.dodaj{
+    width: 255px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #2b7ecc;
+    color: white;
+    border: 1px solid black;
+}
+
+#divZaError {
+    display:none;
+    position:absolute;
+    width: 255px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: orangered;
+    color: black;
+    border: 1px solid black;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.errorVelicina {
+    width: 190px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+}
+
+.form-half {
+    width: auto;
+    float: left;
+    margin: 25px 80px 10px 10px;
+}
+
+.form-half2 {
+    width: auto;
+    float: left;
+    margin: 0px 10px 10px 80px;
+   
+}
+
+.container-center{
+    width: 100%;
+    min-height: 20vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px 15px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.center-form {
+    width: auto;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 50px 55px 30px 55px;
+}
+
+.komentar{
+    text-align:center;
+}
+
+.komentar-hr{
+    width:70%;
+    border-bottom:1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:15px;
+}
+
+.komentar-hr2 {
+    width: 70%;
+    border-bottom: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:15px;
+}
+
+.divZaNoviKoment{
+    width:600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.areaText{
+    width:100%;
+    height:100px;
+    resize:none;
+    margin-bottom:10px;
+}
+.button-koment{
+    width:25%;
+    display:inline;
+    height:35px;
+}
+
+#greska{
+    width:100%;
+    text-align:left;
+}
+.error-koment {
+    width: 70%;
+    display: inline-block;
+    height: 35px;
+    margin-left:5%;
+}
+
+.divZaKoment {
+    width: 600px;
+    height: 115px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.slika-koment{
+    width:20%;
+    padding:20px;
+    height:115px;
+    float:left;
+}
+
+.komet-content{
+    width:79%;
+    margin-left:1%;
+    float:left;
+}
+.slika-koment img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius:50%;
+}
+
+.h5-coment1 {
+    font-size: 16px;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-weight:bold;
+}
+
+.h5-coment {
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+.contet-info{
+    height:40px;
+}
+
+.contet-text{
+    height:73px;
+    padding: 0px 20px 10px 0;
+}
+
+.komentar-text {
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+    #cont1 {
+        margin-left: 80px;
+    }
+
+    #cont2 {
+        margin-right: 80px;
+    }
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    #cont1 {
+        float: none;
+        width: auto;
+        padding-left: 0px;
+        margin-left: 30px;
+    }
+
+    #cont2 {
+        float: none;
+        margin-right: 0px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 770px) and (max-width: 991px){
+    #cont1 {
+        float: none;
+        width: auto;
+        padding-left: 0px;
+        margin-left: 20px;
+    }
+
+    #cont2 {
+        float: none;
+        margin-right: 0px;
+        margin-left: 20px;
+        margin-top:20px;
+    }
+
+
+    .form-half {
+        float: none;
+        width: 400px;
+        margin: 0px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-half2 {
+        float: none;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 50px;
+        padding-right: 5px;
+    }
+
+    .center-form {
+        width: 420px;
+        padding:0;
+    }
+
+    #divZaError{
+        position:static;
+    }
+
+    .komentar-hr2{
+        width:100%;
+    }
+
+    .komentar-hr {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 430px) and (max-width: 770px) {
+    #cont1 {
+        float: none;
+        width: auto;
+        padding-left: 0px;
+        margin-left: 20px;
+    }
+
+    #cont2 {
+        float: none;
+        margin-right: 0px;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .radio-inline{
+        display:block;
+        margin-top:5px;
+        margin-bottom:5px;
+    }
+
+    .radio-inline:first-of-type{
+        margin-left:10px;
+    }
+
+    .form-half {
+        float: none;
+        width: 400px;
+        margin: 0px;
+        margin-bottom: 30px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .form-half2 {
+        float: none;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left:50px;
+        padding-right:5px;
+    }
+
+    .center-form {
+        width: 420px;
+        padding: 0;
+    }
+
+    #divZaError {
+        position: static;
+    }
+
+    .divZaNoviKoment{
+        width:400px;
+    }
+
+    .divZaKoment {
+        width: 400px;   
+    }
+
+    .slika-koment{
+        width:30%;
+    }
+
+    .komet-content{
+        width:69%;
+    }
+
+    .komentar-hr2 {
+        width: 100%;
+    }
+
+    .komentar-hr {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 430px) {
+    #cont1 {
+        float: none;
+        width: auto;
+        padding-left: 0px;
+        margin-left: 20px;
+    }
+
+    #cont2 {
+        float: none;
+        margin-right: 0px;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .radio-inline {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+        .radio-inline:first-of-type {
+            margin-left: 10px;
+        }
+
+    .form-half {
+        float: none;
+        width: 400px;
+        margin: 0px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-half2 {
+        float: none;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 50px;
+        padding-right: 5px;
+    }
+
+    .center-form {
+        width: 420px;
+        padding: 0;
+    }
+
+    #divZaError {
+        position: static;
+    }
+
+    .divZaNoviKoment {
+        width: 300px;
+    }
+
+    .divZaKoment {
+        width: 300px;
+    }
+
+    .slika-koment {
+        display:none;
+    }
+
+    .komet-content {
+        width: 100%;
+    }
+
+    .komentar-hr2 {
+        width: 100%;
+    }
+
+    .komentar-hr {
+        width: 100%;
+    }
+}

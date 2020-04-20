@@ -33,8 +33,12 @@ namespace ClassLibrarySeminarski.Model
 
         public KorisnikKartice Kartica { get; set; }
         [ForeignKey("KarticaID")]
-        public int KarticaID { get; set; }
+        public int? KarticaID { get; set; }
 
         public bool PotvrdaEmail { get; set; }
+
+        public bool Izbrisano { get; set; }
+
+        public string Komentar { get; set; }
     }
 }

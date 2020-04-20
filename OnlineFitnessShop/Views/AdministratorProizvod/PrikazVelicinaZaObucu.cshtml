@@ -1,0 +1,94 @@
+﻿@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@{
+
+     ViewData["Title"] = "PrikazVelicinaZaObucu";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model OnlineFitnessShop.ViewModels.AdministratorVMs.ObucaVelicinePrikazVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Prikaz veličina za artikal</title>
+</head>
+<body>
+<div class="tabela">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Slika</th>
+            <th>Velicina</th>
+            <th>Kolicina</th>
+            <th>Izmijena količine</th>
+         
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var x in @Model.velicine)
+        {
+            <tr>
+
+                <td>
+                    <img src="/images/@Model.imageUrl" width="50px" height="50px" />
+                </td>
+                <td>
+                    @x.Velicina
+                </td>
+                <td>
+                    @x.kolicina
+                </td>
+                <td>
+                    @*@x.kolicina*@
+                    <form asp-action="SnimiIzmijenuKolicineObuce" id="validacijaUnosa">
+                        <div class="form-group">
+                            <input name="velicinaID" value="@x.VelicinaID" hidden />
+                            <input name="novaKolicina" @*value="@x.kolicina"*@ />
+                        </div>
+                            <button type="submit" class="btn btn-warning">Spremi izmijenu količine</button>
+                    </form>
+                </td>
+
+              
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <a href="/AdministratorProizvod/PrikazObuce" class="btn btn-secondary">Nazad</a> <a href="/AdministratorProizvod/DodajVelicinuObuce?ObucaID=@Model.ObucaID" class="btn btn-success">Dodaj novu veličinu</a>
+</div>
+</body>
+</html>
+<script>
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            var check = false;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+
+    $("#validacijaUnosa").validate({
+        rules: {
+            novaKolicina: {
+                number: true,
+                max: 50
+
+            },
+
+        },
+        messages: {
+            novaKolicina: {
+                number: "Moguće samo brojeve unositi",
+
+                max: "Maksimalna količina za unijeti je 50!"
+            },
+
+        }
+
+
+    });
+</script>

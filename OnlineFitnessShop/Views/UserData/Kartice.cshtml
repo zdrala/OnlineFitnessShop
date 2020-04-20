@@ -1,0 +1,78 @@
+﻿@using OnlineFitnessShop.ViewModels.Kupac;
+@using ClassLibrarySeminarski.Model;
+@using OnlineFitnessShop.Helpers;
+@model OnlineFitnessShop.ViewModels.Kupac.KarticeViewVM;
+@{
+    Layout = "~/Views/Shared/korisnikProfil.cshtml";
+
+    string a = "Da";
+    string b = "Ne";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/User/cssZaView.css">
+</head>
+<body>
+    <div class="container-l2">
+        <div class="l4">
+            @if (Model.podaciKartice.Count > 0)
+            {
+                <div class="tabela">
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Vrsta</th>
+                                <th>Broj kartice</th>
+                                <th>Datum  isteka</th>
+                                <th>Aktivna</th>
+                                <th>Akcija</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.podaciKartice)
+                            {
+                                <tr>
+                                    <td>
+                                        @x.NazivKartice
+                                    </td>
+                                    <td>
+                                        @x.BrojKartice
+                                    </td>
+                                    <td>
+                                        @x.MjesecIsteka/@x.GodinaIsteka
+                                    </td>
+                                    <td>
+                                        @if (@x.Aktivna)
+                                        {@a}
+                                    else
+                                    { @b}
+
+                                    </td>
+                                    <td>
+                                        @if (x.Aktivna)
+                                        {
+                                            <a href="/UserData/DeaktivirajKarticu?id=@x.KarticaID" class="btn btn-light btn-sm " style="background-color: #d9554c; border: 1px solid black">Deaktiviraj karticu</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/UserData/AktivirajKarticu?id=@x.KarticaID" class="btn btn-light btn-sm " style="background-color: #5796fa; border: 1px solid black">Aktiviraj karticu</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div id="praznaKorpaID" class="empty">
+                    Nemate dodanih kartica !
+                </div>
+            }
+
+            <a href="/UserData/DodajKarticu" class="btn btn-success">+ Dodaj novu karticu</a>
+        </div>
+     </div>
+</body>

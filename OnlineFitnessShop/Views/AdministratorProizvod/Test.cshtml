@@ -1,0 +1,135 @@
+﻿@using System.Composition
+@using ClassLibrarySeminarski.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@using OnlineFitnessShop.ViewModels
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
+}
+
+
+
+    <div class="divProizvodi">
+
+        <div class="divSuplemetacija">
+            <a href="/AdministratorProizvod/PrikazSuplementacije">
+                <div style="height: 80%; width: 100%; " class="slika">
+                    <img src="/images/Suplementacije.jpg" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Administracija suplementacije</h4>
+
+                </div>
+
+            </a>
+        </div>
+
+        <div class="divOdjeca">
+            <a href="/AdministratorProizvod/PrikazOdjece">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="/images/Majica.jpg" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Administracija odjeće</h4>
+
+                </div>
+            </a>
+        </div>
+
+        <div class="divObuca">
+            <a href="/AdministratorProizvod/PrikazObuce">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="/images/Patike.jpg" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Administracija obuće</h4>
+
+                </div>
+            </a>
+        </div>
+
+        <div class="divDodatci">
+            <a href="/AdministratorProizvod/PrikazDodataka">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="/images/Pojas.jpg" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Administracija dodatcima za treniranje</h4>
+
+                </div>
+            </a>
+        </div>
+        <div class="divKupci">
+            <a href="/AdministratorUsers/PrikazKupaca">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="/images/Kupac.jpg" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Administracija korisnicima</h4>
+
+                </div>
+            </a>
+        </div>
+        <div class="divAdmini">
+            <a href="/AdministratorUsers/PrikazAdmina">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="/images/Administrator.jpg" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Upravljanje adminima</h4>
+
+                </div>
+            </a>
+        </div>
+        <div class="divNarudzbe">
+            <a href="/AdministratorOrders/PrikazNarudzbiNaCekanju">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="~/images/order.png" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Prikaži narudžbe na čekanju</h4>
+
+                </div>
+            </a>
+        </div>
+        @*<div class="divObavijesti">
+            <a href="/AdministratorObavijestiKomentari/PrikazNarudzbiNaCekanju">
+                <div style="height: 80%; width: 100%;" class="slika">
+                    <img src="~/images/order.png" style="width: 100%; height: 100%;" />
+                </div>
+
+
+                <div class="title">
+
+                    <h4>Prikaži narudžbe na čekanju</h4>
+
+                </div>
+            </a>
+        </div>*@
+
+    </div>
